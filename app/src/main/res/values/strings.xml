@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TracTrac</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_events">Events</string>
+    <string name="title_clubs">Clubs</string>
+    <string name="events_near_you">Events near you</string>
+    <string name="search">Search</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>
