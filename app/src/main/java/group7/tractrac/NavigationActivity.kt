@@ -3,7 +3,6 @@ package group7.tractrac
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.design.widget.NavigationView
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import group7.tractrac.R.id
@@ -37,9 +36,9 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 navigateClubs()
                 return@OnNavigationItemSelectedListener true
             }
-            id.navigation_settings -> {
+            id.navigation_profile -> {
 
-                navigateSettings()
+                navigateProfil()
                 return@OnNavigationItemSelectedListener true
             }
             id.navigation_search -> {
@@ -128,5 +127,17 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         transaction.commit()
 
       //  setContentView(R.layout.activity_search)
+    }
+
+    fun navigateProfil() {
+        for (fragment in supportFragmentManager.fragments) {
+            supportFragmentManager.beginTransaction().remove(fragment).commit()
+        }
+        val transaction = manager.beginTransaction()
+        val fragment = LoginFragment()
+
+        transaction.replace(id.fragmentFrame, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
