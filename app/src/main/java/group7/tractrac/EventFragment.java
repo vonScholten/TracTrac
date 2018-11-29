@@ -2,16 +2,26 @@ package group7.tractrac;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
-public class EventFragment extends Fragment {
+public class EventFragment extends Fragment implements AdapterView.OnItemClickListener {
+
+    TextView titleview;
+    TextView categoryview;
+    TextView dateview;
+    TextView racesview;
+    TextView participantsview;
+    ImageView eventimageview;
+    int eventid = 0;
 
     int[] images = {R.drawable.french, R.drawable.swiss, R.drawable.ess, R.drawable.eurosail, R.drawable.redbull};
 
@@ -24,7 +34,6 @@ public class EventFragment extends Fragment {
     String[] participants = {"Participants: 27", "Participants: 18", "Participants: 32", "Participants: 23", "Participants: 61"};
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +42,9 @@ public class EventFragment extends Fragment {
         ListView events = inflaterview.findViewById(R.id.eventlist);
         CustomAdapter eventadapter = new CustomAdapter();
         events.setAdapter(eventadapter);
+        events.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
+
         return inflaterview;
     }
 
@@ -57,20 +69,12 @@ public class EventFragment extends Fragment {
         public View getView(int i, View view, ViewGroup viewGroup) {
 
             view = getLayoutInflater().inflate(R.layout.custom_layout_events, null);
-            ImageView eventimageview = view.findViewById(R.id.eventimage);
-            TextView titleview =  view.findViewById(R.id.title);
-            TextView categoryview = view.findViewById(R.id.category);
-            TextView dateview = view.findViewById(R.id.date);
-            TextView racesview = view.findViewById(R.id.races);
-            TextView participantsview = view.findViewById(R.id.participants);
-
-            titleview.setOnClickListener(new View.OnClickListener(){
-
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            eventimageview = view.findViewById(R.id.eventimage);
+            titleview =  view.findViewById(R.id.title);
+            categoryview = view.findViewById(R.id.category);
+            dateview = view.findViewById(R.id.date);
+            racesview = view.findViewById(R.id.races);
+            participantsview = view.findViewById(R.id.participants);
 
             eventimageview.setImageResource(images[i]);
             titleview.setText(title[i]);
@@ -79,13 +83,38 @@ public class EventFragment extends Fragment {
             racesview.setText(races[i]);
             participantsview.setText(participants[i]);
 
-            //titleview.setTooltipText("Click here to see more information on the event");
-
             return view;
         }
     }
-    public void onClick(View view){
 
+
+    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        // arg2 = the id of the item in our view (List/Grid) that we clicked
+        // arg3 = the id of the item that we have clicked
+        // if we didn't assign any id for the Object (Book) the arg3 value is 0
+        // That means if we comment, aBookDetail.setBookIsbn(i); arg3 value become 0
+
+        if (arg2 == 0){
+            eventid = 0;
+        }
+        else if (arg2 == 1){
+            eventid = 1;
+        }
+        else if (arg2 == 2){
+            eventid = 2;
+        }
+        else if (arg2 == 3){
+            eventid = 3;
+        }
+        else if (arg2 == 04){
+            eventid = 4;
+        }
+
+        Fragment fragment = new EventInfoFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentFrame, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }
