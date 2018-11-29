@@ -60,8 +60,6 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
         supportActionBar?.setDisplayUseLogoEnabled(true)
 
-
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         navigateHome()
