@@ -64,6 +64,14 @@ public class EventFragment extends Fragment {
             TextView racesview = view.findViewById(R.id.races);
             TextView participantsview = view.findViewById(R.id.participants);
 
+            titleview.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
             eventimageview.setImageResource(images[i]);
             titleview.setText(title[i]);
             categoryview.setText(category[i]);
@@ -75,6 +83,9 @@ public class EventFragment extends Fragment {
 
             return view;
         }
+    }
+    public void onClick(View view){
+
     }
 
 }
