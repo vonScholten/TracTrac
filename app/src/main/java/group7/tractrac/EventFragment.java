@@ -71,6 +71,8 @@ public class EventFragment extends Fragment {
             racesview.setText(races[i]);
             participantsview.setText(participants[i]);
 
+            //titleview.setTooltipText("Click here to see more information on the event");
+
             return view;
         }
     }

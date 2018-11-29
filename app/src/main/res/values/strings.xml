@@ -17,4 +17,9 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="event_redbull">Conquer the castle - Red Bull</string>
+    <string name="event_french">French sailing league</string>
+    <string name="event_swiss">Swiss sailing league</string>
+    <string name="event_ess">ESS San Diego 2018</string>
+    <string name="event_eurosail">Eurosail 2018</string>
 </resources>
