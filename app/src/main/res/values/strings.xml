@@ -6,7 +6,7 @@
     <string name="empty"></string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_profile">Settings</string>
+    <string name="title_profile">Profile</string>
     <string name="title_events">Events</string>
     <string name="title_clubs">Clubs</string>
     <string name="events_near_you">Events near you</string>
@@ -22,4 +22,5 @@
     <string name="event_swiss">Swiss sailing league</string>
     <string name="event_ess">ESS San Diego 2018</string>
     <string name="event_eurosail">Eurosail 2018</string>
+    <string name="title_search">Search</string>
 </resources>
