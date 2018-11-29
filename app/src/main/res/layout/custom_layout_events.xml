@@ -79,7 +79,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="2dp"
         android:layout_toStartOf="@+id/date"
-        app:srcCompat="@drawable/calendar" />
+        app:srcCompat="@drawable/ic_event_black_24dp" />
 
     <ImageView
         android:id="@+id/flagicon"
@@ -91,7 +91,7 @@
         android:layout_marginEnd="-1dp"
         android:layout_toStartOf="@+id/races"
         android:layout_toEndOf="@+id/eventimage"
-        app:srcCompat="@drawable/flag" />
+        app:srcCompat="@drawable/ic_flag_black_24dp" />
 
     <ImageView
         android:id="@+id/participanticon"
@@ -101,6 +101,6 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="9dp"
         android:layout_toStartOf="@+id/participants"
-        app:srcCompat="@drawable/participants" />
+        app:srcCompat="@drawable/ic_people_black_24dp" />
 
 </RelativeLayout>

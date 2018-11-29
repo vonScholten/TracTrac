@@ -19,8 +19,7 @@
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:src="@drawable/placeholder" />
+            android:layout_gravity="center" />
 
         <LinearLayout
                 android:orientation="horizontal"
