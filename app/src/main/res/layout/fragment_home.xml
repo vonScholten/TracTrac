@@ -32,7 +32,8 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="12dp"
             android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"/>
+            android:layout_marginEnd="6dp"
+        />
 
     </LinearLayout>
 
