@@ -57,7 +57,7 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setSupportActionBar(findViewById(R.id.tractrac_toolbar))
 
         supportActionBar?.title = ""
-        supportActionBar?.setLogo(R.mipmap.ic_launcher)
+        supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
         supportActionBar?.setDisplayUseLogoEnabled(true)
 
 
