@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import group7.tractrac.R
+import java.io.File
 
 class ModelAdapter(private val context: Context?,
                    private val mData: List<ModelData>) : BaseAdapter() {
@@ -34,13 +37,11 @@ class ModelAdapter(private val context: Context?,
         val titleTextView = rowView.findViewById(R.id.news_title) as TextView
         val imageView = rowView.findViewById(R.id.news_cover) as ImageView
 
+        val  data : ModelData = mData.get(i)
 
+        titleTextView.text = data.getName()
 
-        val news = getItem(i) as String
-        val data = news.split(",")
-
-        titleTextView.text = data[0]
-        imageView.setImageResource(data[1].toInt())
+        Picasso.get().load(data.getImageUrl()).into(imageView)
 
         return rowView
     }

@@ -1,33 +1,29 @@
 package group7.tractrac.home;
 
 public class ModelData {
-    private String mName;
-    private String mImageUrl;
+    private String name;
+    private String imageUrl;
 
     public ModelData(){}
 
     public ModelData(String name, String imageUrl) {
-        if(name.trim().equals("")){
-            name = "No name";
-        }
-
-        this.mName = name;
-        this.mImageUrl = imageUrl;
+        this.name = name;
+        this.imageUrl = imageUrl;
     }
 
-    public String getmName() {
-        return mName;
+    public String getName() {
+        return name;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
+    public void setName(String mName) {
+        this.name = mName;
     }
 
-    public String getmImageUrl() {
-        return mImageUrl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setmImageUrl(String mImageUrl) {
-        this.mImageUrl = mImageUrl;
+    public void setImageUrl(String mImageUrl) {
+        this.imageUrl = mImageUrl;
     }
 }
