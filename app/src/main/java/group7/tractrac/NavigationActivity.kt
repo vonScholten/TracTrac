@@ -5,6 +5,8 @@ import android.support.design.widget.BottomNavigationView.OnNavigationItemSelect
 import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
@@ -53,6 +55,9 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_navigation)
+
+        val storageReference = FirebaseStorage.getInstance().getReference("feed")
+        val databaseReference = FirebaseDatabase.getInstance().getReference("feed")
 
         setSupportActionBar(findViewById(R.id.tractrac_toolbar))
 

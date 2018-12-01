@@ -10,17 +10,17 @@ import android.widget.TextView
 import group7.tractrac.R
 
 class ModelAdapter(private val context: Context?,
-                   private val dataSource: ArrayList<String>) : BaseAdapter() {
+                   private val mData: List<ModelData>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        return dataSource.size
+        return mData.size
     }
 
     override fun getItem(i: Int): Any {
-        return dataSource[i]
+        return mData[i]
     }
 
     override fun getItemId(i: Int): Long {
@@ -32,8 +32,9 @@ class ModelAdapter(private val context: Context?,
 
         //Get title element
         val titleTextView = rowView.findViewById(R.id.news_title) as TextView
-
         val imageView = rowView.findViewById(R.id.news_cover) as ImageView
+
+
 
         val news = getItem(i) as String
         val data = news.split(",")
