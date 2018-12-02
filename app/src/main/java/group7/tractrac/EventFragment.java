@@ -30,8 +30,6 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
 
     ListView events;
 
-    int[] images = {R.drawable.french, R.drawable.swiss, R.drawable.ess, R.drawable.eurosail, R.drawable.redbull};
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
