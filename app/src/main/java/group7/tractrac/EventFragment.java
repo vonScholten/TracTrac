@@ -1,16 +1,19 @@
 package group7.tractrac;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
+import com.google.firebase.database.*;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class EventFragment extends Fragment implements AdapterView.OnItemClickListener {
@@ -22,6 +25,10 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     TextView participantsview;
     ImageView eventimageview;
     public static int eventid = 0;
+    private DatabaseReference databaseReference;
+    private List<EventsData> eventsDataList;
+
+    ListView events;
 
     int[] images = {R.drawable.french, R.drawable.swiss, R.drawable.ess, R.drawable.eurosail, R.drawable.redbull};
 
@@ -38,10 +45,28 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inflaterview = inflater.inflate(R.layout.fragment_event, container, false);
+        events = inflaterview.findViewById(R.id.eventlist);
 
-        ListView events = inflaterview.findViewById(R.id.eventlist);
-        CustomAdapter eventadapter = new CustomAdapter();
-        events.setAdapter(eventadapter);
+        eventsDataList = new ArrayList<>();
+        databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                eventsDataList.clear();
+                for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
+                    EventsData eventsData = postSnapShot.getValue(EventsData.class);
+                    eventsDataList.add(eventsData);
+                }
+                CustomAdapter eventadapter = new CustomAdapter(eventsDataList);
+                events.setAdapter(eventadapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         events.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
 
@@ -49,26 +74,32 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     }
 
     class CustomAdapter extends BaseAdapter{
+        private List<EventsData> eventsDataList;
+
+        public CustomAdapter(List<EventsData> eventsDataList) {
+            this.eventsDataList = eventsDataList;
+        }
 
         @Override
         public int getCount() {
-            return images.length;
+            return eventsDataList.size();
         }
 
         @Override
         public Object getItem(int i) {
-            return null;
+            return eventsDataList.get(i);
         }
 
         @Override
         public long getItemId(int i) {
-            return 0;
+            return (long) i;
         }
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
 
             view = getLayoutInflater().inflate(R.layout.custom_layout_events, null);
+
             eventimageview = view.findViewById(R.id.eventimage);
             titleview =  view.findViewById(R.id.title);
             categoryview = view.findViewById(R.id.category);
@@ -76,12 +107,16 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
             racesview = view.findViewById(R.id.races);
             participantsview = view.findViewById(R.id.participants);
 
-            eventimageview.setImageResource(images[i]);
-            titleview.setText(title[i]);
-            categoryview.setText(category[i]);
-            dateview.setText(date[i]);
-            racesview.setText(races[i]);
-            participantsview.setText(participants[i]);
+            EventsData eventsData = eventsDataList.get(i);
+            Picasso.get().load(eventsData.getImageUrl()).into(eventimageview);
+
+            //eventimageview.setImageResource(images[i]);
+            titleview.setText(eventsData.getTitle());
+            categoryview.setText(eventsData.getCategory());
+            dateview.setText(eventsData.getDate());
+            racesview.setText(eventsData.getRaces());
+            participantsview.setText(eventsData.getParticipants());
+
 
             return view;
         }
