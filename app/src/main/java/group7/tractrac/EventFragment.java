@@ -32,15 +32,6 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
 
     int[] images = {R.drawable.french, R.drawable.swiss, R.drawable.ess, R.drawable.eurosail, R.drawable.redbull};
 
-    String[] title = {"French sailing league","Swiss sailing league","ESS San Diego 2018",
-            "Eurosail 2018", "Red Bull conquer the castle"};
-    String[] category = {"Sailing", "Sailing", "Sailing", "Sailing", "Adventure and multisport"};
-    String[] date = {"19 November", "21 November", "27 November", "29 November", "12 December"};
-
-    String[] races = {"races: 14", "races: 32", "races: 45", "races: 21", "races: 12"};
-    String[] participants = {"Participants: 27", "Participants: 18", "Participants: 32", "Participants: 23", "Participants: 61"};
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
