@@ -71,10 +71,10 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         //val actionBar = getActionBar()
 
-        supportActionBar?.setDisplayShowCustomEnabled(true);
-        supportActionBar?.setDisplayShowTitleEnabled(false);
-        supportActionBar?.setHomeButtonEnabled(false);
-        supportActionBar?.setDisplayHomeAsUpEnabled(false);
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         val inflator = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val v = inflator.inflate(R.layout.custom_actionbar, null)

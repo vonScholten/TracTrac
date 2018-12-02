@@ -17,7 +17,7 @@
             <Button
                 android:id="@+id/events_near_you_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="?attr/actionBarSize"
                 android:text="@string/events_near_you"
                 android:textColor="@android:color/white"
                 android:textAlignment="textStart"
