@@ -24,12 +24,12 @@
         android:id="@+id/fragmentFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <!--
     <android.support.v7.widget.Toolbar
         android:id="@+id/tractrac_toolbar"
         android:layout_width="match_parent"
@@ -39,6 +39,7 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        -->
 
 
 </android.support.constraint.ConstraintLayout>

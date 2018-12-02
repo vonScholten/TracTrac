@@ -1,5 +1,6 @@
 package group7.tractrac
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.design.widget.NavigationView
@@ -12,6 +13,11 @@ import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_navigation.*
+import android.content.Context.LAYOUT_INFLATER_SERVICE
+import android.support.v4.content.ContextCompat.getSystemService
+import android.view.LayoutInflater
+
+
 
 class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -57,11 +63,23 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_navigation)
 
-        setSupportActionBar(findViewById(R.id.tractrac_toolbar))
+        //setSupportActionBar(findViewById(R.id.tractrac_toolbar))
 
-        supportActionBar?.title = ""
-        supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
+        //supportActionBar?.title = ""
+        //supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+        //supportActionBar?.setDisplayUseLogoEnabled(true)
+
+        //val actionBar = getActionBar()
+
+        supportActionBar?.setDisplayShowCustomEnabled(true);
+        supportActionBar?.setDisplayShowTitleEnabled(false);
+        supportActionBar?.setHomeButtonEnabled(false);
+        supportActionBar?.setDisplayHomeAsUpEnabled(false);
+
+        val inflator = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val v = inflator.inflate(R.layout.custom_actionbar, null)
+
+        supportActionBar?.setCustomView(v)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
