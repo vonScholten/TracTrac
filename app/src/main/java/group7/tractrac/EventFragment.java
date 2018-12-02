@@ -21,7 +21,7 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     TextView racesview;
     TextView participantsview;
     ImageView eventimageview;
-    int eventid = 0;
+    public static int eventid = 0;
 
     int[] images = {R.drawable.french, R.drawable.swiss, R.drawable.ess, R.drawable.eurosail, R.drawable.redbull};
 

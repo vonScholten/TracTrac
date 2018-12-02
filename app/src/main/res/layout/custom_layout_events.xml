@@ -1,106 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/eventimage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="37dp"
-        android:divider="@android:color/transparent" android:dividerHeight="3dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+            android:id="@+id/eventimage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="37dp"
+            android:divider="@android:color/transparent" android:dividerHeight="3dp"
+            app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/eventimage"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="5dp"
-        android:text=""
-        android:textSize="17sp" />
+            android:id="@+id/title"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/eventimage"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textSize="17sp"
+            android:textColor=" #015A84"/>
 
     <TextView
-        android:textSize="13sp"
-        android:id="@+id/category"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_alignStart="@+id/title"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:text="" />
+            android:textSize="13sp"
+            android:id="@+id/category"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_alignStart="@+id/title"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor=" #019FC2"/>
 
     <TextView
-        android:textSize="13sp"
-        android:id="@+id/date"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/category"
-        android:layout_alignStart="@+id/title"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:text="" />
+            android:textSize="13sp"
+            android:id="@+id/date"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/category"
+            android:layout_alignStart="@+id/title"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor=" #019FC2"/>
 
     <TextView
-        android:textSize="13sp"
-        android:id="@+id/races"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/date"
-        android:layout_alignStart="@+id/title"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:text="" />
+            android:textSize="13sp"
+            android:id="@+id/races"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date"
+            android:layout_alignStart="@+id/title"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor=" #019FC2"/>
 
     <TextView
-        android:textSize="13sp"
-        android:id="@+id/participants"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/races"
-        android:layout_alignStart="@+id/title"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:text="" />
+            android:textSize="13sp"
+            android:id="@+id/participants"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/races"
+            android:layout_alignStart="@+id/title"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor=" #019FC2"/>
 
     <ImageView
-        android:id="@+id/dateicon"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_above="@+id/races"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="2dp"
-        android:layout_toStartOf="@+id/date"
-        app:srcCompat="@drawable/ic_event_black_24dp" />
+            android:id="@+id/dateicon"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_above="@+id/races"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toStartOf="@+id/date"
+            app:srcCompat="@drawable/ic_event_black_24dp" />
 
     <ImageView
-        android:id="@+id/flagicon"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_above="@+id/participants"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="-40dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_toStartOf="@+id/races"
-        android:layout_toEndOf="@+id/eventimage"
-        app:srcCompat="@drawable/ic_flag_black_24dp" />
+            android:id="@+id/flagicon"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_above="@+id/participants"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="-40dp"
+            android:layout_marginEnd="-1dp"
+            android:layout_toStartOf="@+id/races"
+            android:layout_toEndOf="@+id/eventimage"
+            app:srcCompat="@drawable/ic_flag_black_24dp" />
 
     <ImageView
-        android:id="@+id/participanticon"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_below="@+id/races"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="9dp"
-        android:layout_toStartOf="@+id/participants"
-        app:srcCompat="@drawable/ic_people_black_24dp" />
+            android:id="@+id/participanticon"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_below="@+id/races"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="9dp"
+            android:layout_toStartOf="@+id/participants"
+            app:srcCompat="@drawable/ic_people_black_24dp" />
 
 </RelativeLayout>
