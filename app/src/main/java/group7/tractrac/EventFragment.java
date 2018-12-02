@@ -101,7 +101,6 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
             EventsData eventsData = eventsDataList.get(i);
             Picasso.get().load(eventsData.getImageUrl()).into(eventimageview);
 
-            //eventimageview.setImageResource(images[i]);
             titleview.setText(eventsData.getTitle());
             categoryview.setText(eventsData.getCategory());
             dateview.setText(eventsData.getDate());

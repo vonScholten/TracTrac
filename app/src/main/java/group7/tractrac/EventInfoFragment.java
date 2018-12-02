@@ -27,7 +27,7 @@ public class EventInfoFragment extends Fragment {
 
     public View getView(View view) {
         TextView eventInfoTitle = view.findViewById(R.id.event_info_title);
-
+/**
         switch (EventFragment.eventid) {
             case 0: eventInfoTitle.setText(R.string.event_french);
 
@@ -43,6 +43,7 @@ public class EventInfoFragment extends Fragment {
             default: eventInfoTitle.setText("Event");
                 break;
         }
+ **/
 
         return view;
     }
