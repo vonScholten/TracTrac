@@ -1,12 +1,12 @@
 package group7.tractrac.home;
 
-public class ModelData {
+public class FeedData {
     private String name;
     private String imageUrl;
 
-    public ModelData(){}
+    public FeedData(){}
 
-    public ModelData(String name, String imageUrl) {
+    public FeedData(String name, String imageUrl) {
         this.name = name;
         this.imageUrl = imageUrl;
     }
@@ -15,15 +15,15 @@ public class ModelData {
         return name;
     }
 
-    public void setName(String mName) {
-        this.name = mName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String mImageUrl) {
-        this.imageUrl = mImageUrl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

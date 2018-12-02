@@ -2,7 +2,6 @@ package group7.tractrac.home
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ class HomeFragment : Fragment() {
         FirebaseApp.initializeApp(context)
         val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("feed")
 
-        val mData : List<ModelData> = ArrayList<ModelData>()
+        val feed : List<FeedData> = ArrayList<FeedData>()
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
@@ -37,13 +36,13 @@ class HomeFragment : Fragment() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                (mData as ArrayList<ModelData>).clear()
+                (feed as ArrayList<FeedData>).clear()
 
                 for (postSnapshot : DataSnapshot in dataSnapshot.children){
-                    val data = postSnapshot.getValue(ModelData::class.java)
-                    mData.add(data!!)
+                    val data = postSnapshot.getValue(FeedData::class.java)
+                    feed.add(data!!)
                 }
-                val adapter = ModelAdapter(context, mData)
+                val adapter = FeedAdapter(context, feed)
                 listView.adapter = adapter
             }
 

@@ -7,23 +7,21 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import group7.tractrac.R
-import java.io.File
 
-class ModelAdapter(private val context: Context?,
-                   private val mData: List<ModelData>) : BaseAdapter() {
+class FeedAdapter(private val context: Context?,
+                  private val feed: List<FeedData>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        return mData.size
+        return feed.size
     }
 
     override fun getItem(i: Int): Any {
-        return mData[i]
+        return feed[i]
     }
 
     override fun getItemId(i: Int): Long {
@@ -31,13 +29,13 @@ class ModelAdapter(private val context: Context?,
     }
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.card_model, viewGroup, false)
+        val rowView = inflater.inflate(R.layout.custom_cardview_feed, viewGroup, false)
 
         //Get title element
-        val titleTextView = rowView.findViewById(R.id.news_title) as TextView
-        val imageView = rowView.findViewById(R.id.news_cover) as ImageView
+        val titleTextView = rowView.findViewById(R.id.feed_title) as TextView
+        val imageView = rowView.findViewById(R.id.feed_cover) as ImageView
 
-        val  data : ModelData = mData.get(i)
+        val  data : FeedData = feed.get(i)
 
         titleTextView.text = data.getName()
 
