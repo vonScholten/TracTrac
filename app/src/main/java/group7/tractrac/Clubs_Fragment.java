@@ -11,8 +11,8 @@ import android.widget.ListView;
 
 public class Clubs_Fragment extends Fragment {
 
-    int[] images = {R.drawable.twentyfourhourfinale, R.drawable.ast, R.drawable.cya};
-    int[] imagestwo = {R.drawable.abeamconsulting, R.drawable.boldhorizons, R.drawable.cna};
+    int[] images = {R.drawable.twentyfourhourfinale, R.drawable.boldhorizons, R.drawable.dof, R.drawable.ifkgoteborg};
+    int[] imagestwo = {R.drawable.abeamconsulting, R.drawable.cya, R.drawable.fedo, R.drawable.knoxgs};
 
 
     @Override
