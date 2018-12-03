@@ -30,6 +30,10 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
 
     ListView events;
 
+    public UpcomingEventsFragment(){
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +61,6 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
         });
 
         events.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-
 
         return inflaterview;
     }
