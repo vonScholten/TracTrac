@@ -5,15 +5,43 @@
     android:layout_height="match_parent"
     tools:context="group7.tractrac.EventFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:id="@+id/upcomingbtn"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="Upcoming"
+            android:background="@android:color/transparent"/>
 
+        <Button
+            android:id="@+id/pastbtn"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="Past"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+    <!--
     <ListView
         android:id="@+id/eventlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:color/transparent" android:dividerHeight="2dp">
     </ListView>
+-->
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp"
+        android:id="@+id/fragment_container_events">
 
+</RelativeLayout>
 
 </FrameLayout>
