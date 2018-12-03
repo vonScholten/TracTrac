@@ -19,12 +19,25 @@
                     android:src="@drawable/tractrac"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    android:layout_gravity="center"
                     android:scaleX="0.60"
                     android:scaleY="0.60"
             />
+
         </LinearLayout>
 
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+        >
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_filter_list_black_24dp"
+                    android:tint="@color/colorPrimary"
+            />
+        </LinearLayout>
 
 
     </RelativeLayout>
