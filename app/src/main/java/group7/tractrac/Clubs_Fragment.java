@@ -11,8 +11,8 @@ import android.widget.ListView;
 
 public class Clubs_Fragment extends Fragment {
 
-    int[] images = {R.drawable.twentyfourhourfinale, R.drawable.ast, R.drawable.cya, R.drawable.cnsp, R.drawable.fedo, R.drawable.ifkgoteborg, R.drawable.ifkmora, R.drawable.lbc, R.drawable.lm, R.drawable.osloseil, R.drawable.rdyu, R.drawable.sandefjordseil, R.drawable.seahelp, R.drawable.ssonderborgyc, R.drawable.surfski, R.drawable.usos};
-    int[] imagestwo = {R.drawable.abeamconsulting, R.drawable.boldhorizons, R.drawable.cna, R.drawable.dof, R.drawable.frederikogniko, R.drawable.ifklidingo, R.drawable.knoxgs, R.drawable.lyc, R.drawable.ms, R.drawable.qmsc, R.drawable.stg, R.drawable.scottishorien, R.drawable.skovshoved, R.drawable.spartacus, R.drawable.tvo, R.drawable.zeil};
+    int[] images = {R.drawable.twentyfourhourfinale, R.drawable.ast, R.drawable.cya};
+    int[] imagestwo = {R.drawable.abeamconsulting, R.drawable.boldhorizons, R.drawable.cna};
 
 
     @Override
@@ -24,9 +24,11 @@ public class Clubs_Fragment extends Fragment {
         CustomAdapter clubsadapter = new CustomAdapter();
         clubs.setAdapter(clubsadapter);
         return inflaterview;
+
     }
 
     class CustomAdapter extends BaseAdapter{
+
 
         @Override
         public int getCount() {
