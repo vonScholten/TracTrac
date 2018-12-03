@@ -23,6 +23,11 @@
                 android:name="group7.tractrac.SearchActivity"
                 android:label="@string/title_activity_search"
                 android:theme="@style/Theme.AppCompat.Light"></activity>
+
+        <meta-data
+                android:name="io.fabric.ApiKey"
+                android:value="8dd25af85e773ee2059432823b4068f2dce1ac3b"
+        />
     </application>
 
 </manifest>

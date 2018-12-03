@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import group7.tractrac.tabs.SectionsAdapter;
 
 
 public class EventFragment extends Fragment {
@@ -27,9 +24,9 @@ public class EventFragment extends Fragment {
         View inflaterview = inflater.inflate(R.layout.fragment_event, container, false);
 
 
-        tablayout = (TabLayout) inflaterview.findViewById(R.id.tabs);
-        appbarlayout = (AppBarLayout) inflaterview.findViewById(R.id.appbar);
-        viewpager = (ViewPager) inflaterview.findViewById(R.id.view_pager);
+        tablayout = inflaterview.findViewById(R.id.tabs);
+        appbarlayout =  inflaterview.findViewById(R.id.appbar);
+        viewpager = inflaterview.findViewById(R.id.view_pager);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         adapter.AddFragment(new UpcomingEventsFragment(), "Upcoming");
