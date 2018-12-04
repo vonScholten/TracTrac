@@ -53,10 +53,17 @@ class HomeFragment : Fragment() {
                         val itemValue = listView.getItemAtPosition(position) as FeedData
 
                         // Toast the values
-                        Toast.makeText(context, itemValue.imageUrl, Toast.LENGTH_LONG)
-                            .show()
+                        //Toast.makeText(context, itemValue.imageUrl, Toast.LENGTH_LONG)
+                        //    .show()
 
-                        val fragment = FeedFragment()
+                        val fragment = FeedFragment().apply {
+                            arguments = Bundle().apply {
+                                this.putString("title", itemValue.name)
+                                this.putString("imageUrl", itemValue.imageUrl)
+                            }
+                        }
+
+
                         val transaction = fragmentManager!!.beginTransaction()
 
                         transaction.replace(R.id.fragmentFrame, fragment)
