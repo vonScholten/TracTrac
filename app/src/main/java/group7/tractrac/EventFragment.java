@@ -36,23 +36,26 @@ public class EventFragment extends Fragment {
         tablayout.setupWithViewPager(viewpager);
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            UpcomingEventsFragment upcomingFragment = new UpcomingEventsFragment();
-            PastEventsFragment pastFragment = new PastEventsFragment();
+
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                UpcomingEventsFragment upcomingFragment = new UpcomingEventsFragment();
+                PastEventsFragment pastFragment = new PastEventsFragment();
+
                 switch (tab.getPosition()) {
                     case 0:
-                        transaction.add(R.id.fragment_container_events, upcomingFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
-                    case 1:
-                        transaction.add(R.id.fragment_container_events, pastFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
+                            transaction.replace(R.id.fragment_container_events, upcomingFragment);
 
+                        break;
+
+                    case 1:
+                            transaction.replace(R.id.fragment_container_events, pastFragment);
+                        break;
                 }
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
 
             @Override
@@ -61,17 +64,20 @@ public class EventFragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                UpcomingEventsFragment upcomingFragment = new UpcomingEventsFragment();
+                PastEventsFragment pastFragment = new PastEventsFragment();
                 switch (tab.getPosition()) {
                     case 0:
-                        transaction.add(R.id.fragment_container_events, upcomingFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
+                            transaction.replace(R.id.fragment_container_events, upcomingFragment);
+                        break;
                     case 1:
-                        transaction.add(R.id.fragment_container_events, pastFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
+                            transaction.replace(R.id.fragment_container_events, pastFragment);
+                        break;
 
                 }
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

@@ -22,7 +22,8 @@
         <activity
                 android:name="group7.tractrac.SearchActivity"
                 android:label="@string/title_activity_search"
-                android:theme="@style/Theme.AppCompat.Light"></activity>
+                android:theme="@style/Theme.AppCompat.Light">
+        </activity>
 
         <meta-data
                 android:name="io.fabric.ApiKey"
