@@ -32,6 +32,12 @@ public class EventFragment extends Fragment {
         adapter.AddFragment(new UpcomingEventsFragment(), "Upcoming");
         adapter.AddFragment(new PastEventsFragment(), "Past");
 
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        UpcomingEventsFragment upcomingFragment = new UpcomingEventsFragment();
+        transaction.replace(R.id.fragment_container_events, upcomingFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
         viewpager.setAdapter(adapter);
         tablayout.setupWithViewPager(viewpager);
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
