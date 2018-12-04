@@ -22,7 +22,6 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
     TextView categoryview;
     TextView dateview;
     TextView racesview;
-    TextView participantsview;
     ImageView eventimageview;
     public static int eventid = 0;
     private DatabaseReference databaseReference;
@@ -41,7 +40,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
         events = inflaterview.findViewById(R.id.eventlist);
 
         eventsDataList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        databaseReference = FirebaseDatabase.getInstance().getReference("past");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -98,7 +97,6 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             categoryview = view.findViewById(R.id.category);
             dateview = view.findViewById(R.id.date);
             racesview = view.findViewById(R.id.races);
-            participantsview = view.findViewById(R.id.participants);
 
             EventsData eventsData = eventsDataList.get(i);
             Picasso.get().load(eventsData.getImageUrl()).into(eventimageview);
@@ -107,7 +105,6 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             categoryview.setText(eventsData.getCategory());
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
-            participantsview.setText(eventsData.getParticipants());
 
 
             return view;

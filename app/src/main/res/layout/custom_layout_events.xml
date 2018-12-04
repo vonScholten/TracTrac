@@ -64,17 +64,7 @@
             android:text=""
             android:textColor=" #019FC2"/>
 
-    <TextView
-            android:textSize="13sp"
-            android:id="@+id/participants"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/races"
-            android:layout_alignStart="@+id/title"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="5dp"
-            android:text=""
-            android:textColor=" #019FC2"/>
+
 
     <ImageView
             android:id="@+id/dateicon"
@@ -84,28 +74,21 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="2dp"
             android:layout_toStartOf="@+id/date"
+            android:tint="#015A84"
             app:srcCompat="@drawable/ic_event_black_24dp" />
 
     <ImageView
             android:id="@+id/flagicon"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:layout_above="@+id/participants"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="-40dp"
-            android:layout_marginEnd="-1dp"
+            android:layout_below="@id/dateicon"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="0dp"
             android:layout_toStartOf="@+id/races"
             android:layout_toEndOf="@+id/eventimage"
-            app:srcCompat="@drawable/ic_flag_black_24dp" />
+            android:tint="#015A84"
+            app:srcCompat="@drawable/ic_flag_black_24dp" android:layout_marginBottom="-205dp"/>
 
-    <ImageView
-            android:id="@+id/participanticon"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:layout_below="@+id/races"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="9dp"
-            android:layout_toStartOf="@+id/participants"
-            app:srcCompat="@drawable/ic_people_black_24dp" />
 
 </RelativeLayout>

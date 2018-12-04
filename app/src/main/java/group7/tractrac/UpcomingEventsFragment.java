@@ -1,6 +1,5 @@
 package group7.tractrac;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -22,7 +21,6 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
     TextView categoryview;
     TextView dateview;
     TextView racesview;
-    TextView participantsview;
     ImageView eventimageview;
     public static int eventid = 0;
     private DatabaseReference databaseReference;
@@ -41,7 +39,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
         events = inflaterview.findViewById(R.id.eventlist);
 
         eventsDataList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        databaseReference = FirebaseDatabase.getInstance().getReference("upcoming");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -60,7 +58,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             }
         });
 
-        events.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        events.setOnItemClickListener(this);
 
         return inflaterview;
     }
@@ -97,7 +95,6 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             categoryview = view.findViewById(R.id.category);
             dateview = view.findViewById(R.id.date);
             racesview = view.findViewById(R.id.races);
-            participantsview = view.findViewById(R.id.participants);
 
             EventsData eventsData = eventsDataList.get(i);
             Picasso.get().load(eventsData.getImageUrl()).into(eventimageview);
@@ -106,7 +103,6 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             categoryview.setText(eventsData.getCategory());
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
-            participantsview.setText(eventsData.getParticipants());
 
 
             return view;
@@ -132,7 +128,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
         else if (arg2 == 3){
             eventid = 3;
         }
-        else if (arg2 == 04){
+        else if (arg2 == 4){
             eventid = 4;
         }
 
