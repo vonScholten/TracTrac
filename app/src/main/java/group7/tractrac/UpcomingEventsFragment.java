@@ -25,7 +25,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
     public static int eventid = 0;
     private DatabaseReference databaseReference;
     private List<EventsData> eventsDataList;
-
+    //private ProgressBar spinner;
     ListView events;
 
     public UpcomingEventsFragment(){
@@ -37,6 +37,8 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         View inflaterview = inflater.inflate(R.layout.fragment_upcoming_events, container, false);
         events = inflaterview.findViewById(R.id.eventlist);
+        //spinner = inflaterview.findViewById(R.id.progressBar1);
+        //spinner.setVisibility(View.GONE);
 
         eventsDataList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("upcoming");
@@ -56,9 +58,11 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
 
         events.setOnItemClickListener(this);
+
 
         return inflaterview;
     }
@@ -103,6 +107,8 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             categoryview.setText(eventsData.getCategory());
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
+
+
 
 
             return view;

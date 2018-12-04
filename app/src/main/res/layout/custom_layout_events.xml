@@ -14,7 +14,8 @@
             android:layout_marginStart="37dp"
             android:layout_marginTop="37dp"
             android:divider="@android:color/transparent" android:dividerHeight="3dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@mipmap/ic_launcher"
+    />
 
     <TextView
             android:id="@+id/title"
@@ -89,6 +90,13 @@
             android:layout_toEndOf="@+id/eventimage"
             android:tint="#015A84"
             app:srcCompat="@drawable/ic_flag_black_24dp" android:layout_marginBottom="-205dp"/>
-
+<!--
+    <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+-->
 
 </RelativeLayout>
