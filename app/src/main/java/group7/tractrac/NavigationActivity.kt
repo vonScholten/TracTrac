@@ -5,18 +5,12 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.view.MenuItem
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
 import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_navigation.*
-import android.content.Context.LAYOUT_INFLATER_SERVICE
-import android.support.v4.content.ContextCompat.getSystemService
-import android.view.LayoutInflater
-
 
 
 class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
