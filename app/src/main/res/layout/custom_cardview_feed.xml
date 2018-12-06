@@ -21,19 +21,29 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center" />
 
-
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="11dp"
+        >
 
             <TextView
                     android:id="@+id/feed_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="11dp"
-                    android:padding="11dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+            />
+            <TextView
+                    android:id="@+id/feed_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="20/01-2018"
+                    android:textSize="9sp"
+                    android:layout_gravity="center"
             />
 
         </LinearLayout>

@@ -2,28 +2,35 @@ package group7.tractrac.home
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
+import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import group7.tractrac.R
 import kotlinx.android.synthetic.main.fragment_feed.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private lateinit var listView : ListView
     private lateinit var adapter: FeedAdapter
+    private lateinit var loader : LottieAnimationView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
         listView = view.findViewById(R.id.news_list_view) as ListView
+        loader = view.findViewById(R.id.imageLoader) as LottieAnimationView
+        listView.visibility = View.GONE
 
         FirebaseApp.initializeApp(context)
         val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("feed")
@@ -67,6 +74,7 @@ class HomeFragment : Fragment() {
                         val transaction = fragmentManager!!.beginTransaction()
 
                         transaction.replace(R.id.fragmentFrame, fragment)
+                        transaction.setCustomAnimations(R.anim.slide_in_right, 0, 0, 0)
                         transaction.addToBackStack(null)
                         transaction.commit()
 
@@ -75,6 +83,9 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+        loader.visibility = View.GONE
+        listView.visibility = View.VISIBLE
 
         return view
 
