@@ -2,9 +2,6 @@ package group7.tractrac
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
-
 
 
 class MainActivity : AppCompatActivity() {

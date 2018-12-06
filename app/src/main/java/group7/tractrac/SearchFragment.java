@@ -1,22 +1,11 @@
 package group7.tractrac;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Debug;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toolbar;
-
 import group7.tractrac.CostumList.SearchListItems;
 import group7.tractrac.CostumList.Search_ListAdapter;
 import group7.tractrac.tabs.Clubs_tab;
@@ -25,10 +14,6 @@ import group7.tractrac.tabs.Relevant_tab;
 import group7.tractrac.tabs.SectionsAdapter;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 
 public class SearchFragment extends Fragment {
