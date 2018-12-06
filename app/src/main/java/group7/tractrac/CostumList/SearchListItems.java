@@ -1,6 +1,8 @@
 package group7.tractrac.CostumList;
 
-public class SearchListItems {
+import java.util.Comparator;
+
+public class SearchListItems  {
 
     public int imageView;
     public String eventName;
@@ -34,5 +36,21 @@ public class SearchListItems {
 
     }
 
+    /*
+    * Crap.....
+    * */
 
+    public static Comparator<SearchListItems> COMPARE_BY_EVENT = new Comparator<SearchListItems>() {
+        @Override
+        public int compare(SearchListItems one, SearchListItems other) {
+            return one.event.compareTo(other.event);
+        }
+    };
+
+    public static Comparator<SearchListItems> COMPARE_BY_NAME = new Comparator<SearchListItems>() {
+        @Override
+        public int compare(SearchListItems one, SearchListItems other) {
+            return one.eventName.compareTo(other.eventName);
+        }
+    };
 }

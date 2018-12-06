@@ -3,6 +3,7 @@ package group7.tractrac.tabs;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class Relevant_tab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        Log.d("Relevant", "onCreateView:");
         View inflaterview = inflater.inflate(R.layout.fragment_relevant_tab, container, false);
 
         listView = inflaterview.findViewById(R.id.RelevantTabList);

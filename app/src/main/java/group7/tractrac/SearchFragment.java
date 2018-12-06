@@ -1,46 +1,72 @@
 package group7.tractrac;
 
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toolbar;
+
 import group7.tractrac.CostumList.SearchListItems;
+import group7.tractrac.CostumList.Search_ListAdapter;
 import group7.tractrac.tabs.Clubs_tab;
 import group7.tractrac.tabs.Events_tab;
 import group7.tractrac.tabs.Relevant_tab;
 import group7.tractrac.tabs.SectionsAdapter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class SearchFragment extends Fragment {
 
 private ListView listView;
 private ArrayList <SearchListItems> arrayList;
-SearchListItems searchListItems;
+private ArrayList<SearchListItems> currentArrayList;
+private SearchListItems searchListItems;
+private SearchView searchView;
 
 private static final String  TAG = "Main";
 private SectionsAdapter sectionsAdapter;
 private ViewPager viewPager;
+    Search_ListAdapter listAdapter;
+    View inflaterview;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
+        inflaterview = inflater.inflate(R.layout.fragment_search, container, false);
 
-        View inflaterview = inflater.inflate(R.layout.fragment_search, container, false);
+        listView = (ListView) inflaterview.findViewById(R.id.searchList);
 
-        sectionsAdapter = new SectionsAdapter(getFragmentManager());
+        arrayList = new ArrayList<>();
 
-        viewPager = inflaterview.findViewById(R.id.container);
-        setUpAdapter(viewPager);
+        setupList();
 
-        TabLayout tabLayout = inflaterview.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+       // sectionsAdapter = new SectionsAdapter(getFragmentManager());
+
+       // viewPager = inflaterview.findViewById(R.id.container);
+
+        //setUpAdapter(viewPager);
+
+        //TabLayout tabLayout = inflaterview.findViewById(R.id.tabs);
+        //tabLayout.setupWithViewPager(viewPager);
 
         // if need it can be added again, but prob not gonna happen.
 
@@ -54,5 +80,86 @@ private ViewPager viewPager;
         adapter.addFragment(new Clubs_tab(),"ClubsTab");
         viewPager.setAdapter(adapter);
     }
+
+    void setupList () {
+        // searchListItems.event = "test01";
+        // searchListItems.eventName = "EventTest01";
+        //  searchListItems.imageView = R.drawable.eurosail;
+        //  arrayList.add(searchListItems);
+
+        searchListItems = new SearchListItems(R.drawable.ess,"Relevant test","Event");
+
+        arrayList.add(searchListItems);
+
+        searchListItems = new SearchListItems(R.drawable.eurosail,"Sailing","Event");
+
+        arrayList.add(searchListItems);
+
+        searchListItems = new SearchListItems(R.drawable.eurosail,"Running","Event");
+
+        arrayList.add(searchListItems);
+
+        searchListItems = new SearchListItems(R.drawable.eurosail,"SuperRunning","Event");
+
+        arrayList.add(searchListItems);
+
+        searchListItems = new SearchListItems(R.drawable.eurosail,"SuperRunning","Club");
+
+
+        arrayList.add(searchListItems);
+
+        searchListItems = new SearchListItems(R.drawable.eurosail,"SuperRunning","Club");
+
+        arrayList.add(searchListItems);
+
+
+        listAdapter = new Search_ListAdapter(getContext(),R.layout.costume_search_list, arrayList);
+
+        listView.setAdapter(listAdapter);
+    }
+
+    void sortList () {
+
+
+        //searchView.getQuery();
+
+
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_search, menu);
+
+        //Old code
+        /*
+        Log.d("inflater", String.valueOf(inflater));
+
+        MenuItem menuItem = menu.findItem(R.id.searchList);
+
+        Log.d("Test", String.valueOf(menu));
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                listAdapter.getFilter().filter(s);
+                return false;
+            }
+        }); */
+
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return false;
+    }
+
+
 
 }
