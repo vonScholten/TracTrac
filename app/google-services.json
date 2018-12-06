@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "119767730175",
+    "firebase_url": "https://tractrac-22113.firebaseio.com",
+    "project_id": "tractrac-22113",
+    "storage_bucket": "tractrac-22113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119767730175:android:fe2f13c1e6ccc9a4",
+        "android_client_info": {
+          "package_name": "com.example.madsfinnerup.tractrac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119767730175-gr1l7vpr4gahoe4o76hp3nfhhvkd9t6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.madsfinnerup.tractrac",
+            "certificate_hash": "d40980c9771feabf24650efc11cc0f763a4bff35"
+          }
+        },
+        {
+          "client_id": "119767730175-l4a2ncap51be768bjs9775sjibtrp7if.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.madsfinnerup.tractrac",
+            "certificate_hash": "82f4a368c0dfa88f15b29be1dc865ae1d6aa0e77"
+          }
+        },
+        {
+          "client_id": "119767730175-57ha8mu24rvtsi1jovsqb8bt4ik49taj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQoQYTv6DYWa2gG1PALrA3qs_E49tJr-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119767730175-57ha8mu24rvtsi1jovsqb8bt4ik49taj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119767730175:android:19b539b462875d03",
+        "android_client_info": {
+          "package_name": "group7.tractrac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119767730175-u9f1orsr35pg3ihcpb13slk9io6ioui7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "group7.tractrac",
+            "certificate_hash": "d40980c9771feabf24650efc11cc0f763a4bff35"
+          }
+        },
+        {
+          "client_id": "119767730175-57ha8mu24rvtsi1jovsqb8bt4ik49taj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQoQYTv6DYWa2gG1PALrA3qs_E49tJr-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119767730175-57ha8mu24rvtsi1jovsqb8bt4ik49taj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

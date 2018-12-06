@@ -3,9 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty"></string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_settings">Settings</string>
+    <string name="title_profile">Profile</string>
     <string name="title_events">Events</string>
     <string name="title_clubs">Clubs</string>
     <string name="events_near_you">Events near you</string>
@@ -16,6 +17,12 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="event_redbull">Conquer the castle - Red Bull</string>
+    <string name="event_french">French sailing league</string>
+    <string name="event_swiss">Swiss sailing league</string>
+    <string name="event_ess">ESS San Diego 2018</string>
+    <string name="event_eurosail">Eurosail 2018</string>
+    <string name="title_search">Search</string>
     <string name="title_activity_search_tab">SearchTab</string>
     <string name="title_activity_search_">Search_Activity</string>
 </resources>

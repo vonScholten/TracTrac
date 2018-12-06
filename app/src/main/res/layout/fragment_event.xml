@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="our.awesome.tractrac.EventFragment">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context="group7.tractrac.EventFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <ListView
-        android:id="@+id/eventlist"
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+        <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabTextColor="#015A84"
+                app:tabIndicatorColor="#019FC2">
+
+            <android.support.design.widget.TabItem
+                    android:id="@+id/UpcomingId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upcoming"
+                    />
+
+            <android.support.design.widget.TabItem
+                    android:id="@+id/PastId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Past" />
+
+        </android.support.design.widget.TabLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/view_pager">
+        </android.support.v4.view.ViewPager>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@android:color/transparent" android:dividerHeight="2dp">
-    </ListView>
+        android:layout_marginTop="75dp"
+        android:id="@+id/fragment_container_events">
 
+</RelativeLayout>
 
 
 </FrameLayout>

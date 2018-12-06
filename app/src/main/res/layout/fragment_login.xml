@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="our.awesome.tractrac.LoginFragment">
+    tools:context="group7.tractrac.LoginFragment">
 
     <EditText
         android:id="@+id/emailAddress"
@@ -61,7 +61,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="261dp"
-        android:text="------------------------------------------ or ------------------------------------------"
+        android:text="---------------------------------- or ----------------------------------"
         android:textSize="12sp" />
 
     <Button

@@ -7,20 +7,22 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import group7.tractrac.R
+import kotlinx.android.synthetic.main.custom_cardview_feed.view.feed_title
 
-class ModelAdapter(private val context: Context?,
-                   private val dataSource: ArrayList<String>) : BaseAdapter() {
+class FeedAdapter(private val context: Context?,
+                  private val feed: List<FeedData>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        return dataSource.size
+        return feed.size
     }
 
     override fun getItem(i: Int): Any {
-        return dataSource[i]
+        return feed[i]
     }
 
     override fun getItemId(i: Int): Long {
@@ -28,18 +30,16 @@ class ModelAdapter(private val context: Context?,
     }
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.card_model, viewGroup, false)
+        val rowView = inflater.inflate(R.layout.custom_cardview_feed, viewGroup, false)
 
         //Get title element
-        val titleTextView = rowView.findViewById(R.id.news_title) as TextView
+        val titleTextView = rowView.findViewById(R.id.feed_title) as TextView
+        val imageView = rowView.findViewById(R.id.feed_cover) as ImageView
 
-        val imageView = rowView.findViewById(R.id.news_cover) as ImageView
+        val  data : FeedData = feed.get(i)
 
-        val news = getItem(i) as String
-        val data = news.split(",")
-
-        titleTextView.text = data[0]
-        imageView.setImageResource(data[1].toInt())
+        titleTextView.text = data.name
+        Picasso.get().load(data.imageUrl).into(imageView)
 
         return rowView
     }

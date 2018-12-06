@@ -1,16 +1,21 @@
 package group7.tractrac
 
 import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.view.MenuItem
+import com.crashlytics.android.Crashlytics
 import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
 import group7.tractrac.tabs.Search_Activity
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_navigation.*
+
 
 class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,9 +43,9 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 navigateClubs()
                 return@OnNavigationItemSelectedListener true
             }
-            id.navigation_settings -> {
+            id.navigation_profile -> {
 
-                navigateSettings()
+                navigateProfil()
                 return@OnNavigationItemSelectedListener true
             }
             id.navigation_search -> {
@@ -55,7 +60,25 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_navigation)
-        setSupportActionBar(findViewById(R.id.tractrac_toolbar))
+        Fabric.with(this, Crashlytics())
+
+        //setSupportActionBar(findViewById(R.id.tractrac_toolbar))
+
+        //supportActionBar?.title = ""
+        //supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+        //supportActionBar?.setDisplayUseLogoEnabled(true)
+
+        //val actionBar = getActionBar()
+
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        val inflator = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val v = inflator.inflate(R.layout.custom_actionbar, null)
+
+        supportActionBar?.setCustomView(v)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -128,5 +151,17 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         startActivity(intent);
        // setContentView(R.layout.)
+    }
+
+    fun navigateProfil() {
+        for (fragment in supportFragmentManager.fragments) {
+            supportFragmentManager.beginTransaction().remove(fragment).commit()
+        }
+        val transaction = manager.beginTransaction()
+        val fragment = LoginFragment()
+
+        transaction.replace(id.fragmentFrame, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

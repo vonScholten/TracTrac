@@ -7,7 +7,7 @@
     android:minHeight="250dp"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context="com.example.madsfinnerup.tractrac.our.example.madsfinnerup.tractrac.Settings_Fragment"
+    tools:context="group7.tractrac.Settings_Fragment"
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
