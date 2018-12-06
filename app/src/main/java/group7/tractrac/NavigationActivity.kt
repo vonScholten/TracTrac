@@ -7,9 +7,11 @@ import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.MenuItem
+import com.crashlytics.android.Crashlytics
 import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_navigation.*
 
 
@@ -56,6 +58,7 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_navigation)
+        Fabric.with(this, Crashlytics())
 
         //setSupportActionBar(findViewById(R.id.tractrac_toolbar))
 

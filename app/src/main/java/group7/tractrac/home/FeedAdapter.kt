@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import group7.tractrac.R
+import kotlinx.android.synthetic.main.custom_cardview_feed.view.feed_title
 
 class FeedAdapter(private val context: Context?,
                   private val feed: List<FeedData>) : BaseAdapter() {
@@ -37,9 +38,8 @@ class FeedAdapter(private val context: Context?,
 
         val  data : FeedData = feed.get(i)
 
-        titleTextView.text = data.getName()
-
-        Picasso.get().load(data.getImageUrl()).into(imageView)
+        titleTextView.text = data.name
+        Picasso.get().load(data.imageUrl).into(imageView)
 
         return rowView
     }
