@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
@@ -33,6 +34,9 @@ class FeedFragment : Fragment() {
         feedTitle.text =title
 
         Picasso.get().load(imageUrl).into(feedCover)
+
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_left)
+        view.startAnimation(animation)
 
         return view
 

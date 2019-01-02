@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
@@ -82,6 +83,9 @@ class HomeFragment : Fragment() {
 
         loader.visibility = View.GONE
         listView.visibility = View.VISIBLE
+
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_right)
+        view.startAnimation(animation)
 
         return view
 
