@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.google.firebase.database.*;
 import com.squareup.picasso.Picasso;
@@ -58,7 +60,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             }
         });
 
-        events.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        events.setOnItemClickListener(this);
 
 
         return inflaterview;
@@ -105,6 +107,9 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
 
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_left);
+            view.startAnimation(animation);
+
 
             return view;
         }
@@ -133,7 +138,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             eventid = 4;
         }
 
-        Fragment fragment = new EventInfoFragment();
+        Fragment fragment = new PastEventInfoFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragmentFrame, fragment);
         transaction.addToBackStack(null);

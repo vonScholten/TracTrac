@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class EventInfoFragment extends Fragment {
+public class UpcomingEventInfoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View inflaterview = inflater.inflate(R.layout.fragment_event_info, container, false);
+        View inflaterview = inflater.inflate(R.layout.fragment_upcoming_event_info, container, false);
         getView(inflaterview);
 
 

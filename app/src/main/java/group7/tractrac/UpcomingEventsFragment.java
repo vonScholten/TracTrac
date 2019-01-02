@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.google.firebase.database.*;
 import com.squareup.picasso.Picasso;
@@ -64,6 +66,8 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
         events.setOnItemClickListener(this);
 
 
+
+
         return inflaterview;
     }
 
@@ -108,6 +112,9 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
 
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right);
+            view.startAnimation(animation);
+
 
 
 
@@ -138,7 +145,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             eventid = 4;
         }
 
-        Fragment fragment = new EventInfoFragment();
+        Fragment fragment = new UpcomingEventInfoFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragmentFrame, fragment);
         transaction.addToBackStack(null);
