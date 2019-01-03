@@ -1,6 +1,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -8,14 +9,21 @@
             android:orientation="vertical">
 
             <android.support.design.widget.AppBarLayout
-                android:id="@+id/appbar"
+                android:id="@+id/searchAppbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/tabs"
+                <SearchView
+                    android:id="@+id/searchSearch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/searchTabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicatorColor="#019FC2"
+                    app:tabTextColor="#015A84">
 
                     <android.support.design.widget.TabItem
                         android:id="@+id/RelevanteID"
@@ -36,12 +44,19 @@
                         android:text="Clubs" />
                 </android.support.design.widget.TabLayout>
 
-                <ListView
-                    android:id="@+id/searchList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/common_google_signin_btn_text_dark_pressed" />
-
             </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:id="@+id/searchFragmentholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
         </LinearLayout>
-    </android.support.design.widget.CoordinatorLayout>
+
+</android.support.design.widget.CoordinatorLayout>

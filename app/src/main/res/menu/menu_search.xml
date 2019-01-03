@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="group7.tractrac.SearchActivity">
     <item
-        android:id="@+id/search_events"
+        android:id="@+id/searchMenu"
         android:icon="@android:drawable/ic_menu_search"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
