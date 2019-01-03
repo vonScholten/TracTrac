@@ -5,20 +5,39 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class UpcomingEventInfoFragment extends Fragment {
+    TextView eventTitle;
+    ImageView eventImg;
+    String title;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inflaterview = inflater.inflate(R.layout.fragment_upcoming_event_info, container, false);
         getView(inflaterview);
+        eventTitle = inflaterview.findViewById(R.id.event_info_title);
+        eventImg = inflaterview.findViewById(R.id.event_image);
+        setTitle();
 
 
 
         return inflaterview;
+    }
+
+
+    private void setTitle() {
+        if (UpcomingEventsFragment.eventid == 0){
+            eventTitle.setText(UpcomingEventsFragment.title);
+
+        }
+        else
+            if (UpcomingEventsFragment.eventid == 1){
+                eventTitle.setText(UpcomingEventsFragment.title);
+            }
     }
 
 

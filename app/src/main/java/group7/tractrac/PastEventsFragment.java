@@ -27,6 +27,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
     public static int eventid = 0;
     private DatabaseReference databaseReference;
     private List<EventsData> eventsDataList;
+    static String title;
 
     ListView events;
 
@@ -116,33 +117,40 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
     }
 
 
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+    public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
         // arg2 = the id of the item in our view (List/Grid) that we clicked
         // arg3 = the id of the item that we have clicked
         // if we didn't assign any id for the Object (Book) the arg3 value is 0
         // That means if we comment, aBookDetail.setBookIsbn(i); arg3 value become 0
 
-        if (arg2 == 0){
-            eventid = 0;
-        }
-        else if (arg2 == 1){
-            eventid = 1;
-        }
-        else if (arg2 == 2){
-            eventid = 2;
-        }
-        else if (arg2 == 3){
-            eventid = 3;
-        }
-        else if (arg2 == 04){
-            eventid = 4;
-        }
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (arg2 == 0){
+                    eventid = 0;
+                    title = dataSnapshot.child("01").child("title").getValue().toString();
+                }
+                else if (arg2 == 1){
+                    eventid = 1;
+                    title = dataSnapshot.child("02").child("title").getValue().toString();
+                }
+                else if (arg2 == 2){
+                    eventid = 2;
+                    title = dataSnapshot.child("03").child("title").getValue().toString();
+                }
+                Fragment fragment = new UpcomingEventInfoFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentFrame, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
-        Fragment fragment = new PastEventInfoFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragmentFrame, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

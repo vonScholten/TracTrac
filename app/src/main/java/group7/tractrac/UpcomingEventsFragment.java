@@ -29,6 +29,8 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
     private List<EventsData> eventsDataList;
     //private ProgressBar spinner;
     ListView events;
+    static String title;
+    static  ImageView image;
 
     public UpcomingEventsFragment(){
 
@@ -65,11 +67,9 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
 
         events.setOnItemClickListener(this);
 
-
-
-
         return inflaterview;
     }
+
 
     class CustomAdapter extends BaseAdapter{
         private List<EventsData> eventsDataList;
@@ -123,33 +123,41 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
     }
 
 
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+
+
+    public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
         // arg2 = the id of the item in our view (List/Grid) that we clicked
         // arg3 = the id of the item that we have clicked
         // if we didn't assign any id for the Object (Book) the arg3 value is 0
         // That means if we comment, aBookDetail.setBookIsbn(i); arg3 value become 0
 
-        if (arg2 == 0){
-            eventid = 0;
-        }
-        else if (arg2 == 1){
-            eventid = 1;
-        }
-        else if (arg2 == 2){
-            eventid = 2;
-        }
-        else if (arg2 == 3){
-            eventid = 3;
-        }
-        else if (arg2 == 4){
-            eventid = 4;
-        }
 
-        Fragment fragment = new UpcomingEventInfoFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragmentFrame, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (arg2 == 0){
+                        eventid = 0;
+                        title = dataSnapshot.child("01").child("title").getValue().toString();
+                    }
+                    else if (arg2 == 1){
+                        eventid = 1;
+                        title = dataSnapshot.child("02").child("title").getValue().toString();
+                    }
+                    Fragment fragment = new UpcomingEventInfoFragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragmentFrame, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
     }
 
 }

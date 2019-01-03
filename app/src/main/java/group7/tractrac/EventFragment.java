@@ -16,13 +16,18 @@ public class EventFragment extends Fragment {
     private TabLayout tablayout;
     private AppBarLayout appbarlayout;
     private ViewPager viewpager;
+    String title = "";
+    String date = "";
+    String races = "";
+    String h = "";
+    String titjle = "";
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View inflaterview = inflater.inflate(R.layout.fragment_event, container, false);
+        View inflaterview = inflater.inflate(R.layout.fragment_event, null, false);
 
 
         tablayout = inflaterview.findViewById(R.id.tabs);
