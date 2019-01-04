@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import group7.tractrac.tabs.SectionsAdapter;
 
 
 public class EventFragment extends Fragment {
@@ -34,9 +35,10 @@ public class EventFragment extends Fragment {
         appbarlayout =  inflaterview.findViewById(R.id.appbar);
         viewpager = inflaterview.findViewById(R.id.view_pager);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.AddFragment(new UpcomingEventsFragment(), "Upcoming");
-        adapter.AddFragment(new PastEventsFragment(), "Past");
+        SectionsAdapter adapter = new SectionsAdapter(getFragmentManager());
+
+        adapter.addFragment(new UpcomingEventsFragment(), "Upcoming");
+        adapter.addFragment(new PastEventsFragment(), "Past");
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         UpcomingEventsFragment upcomingFragment = new UpcomingEventsFragment();

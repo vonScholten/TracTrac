@@ -138,7 +138,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
                     eventid = 2;
                     title = dataSnapshot.child("03").child("title").getValue().toString();
                 }
-                Fragment fragment = new UpcomingEventInfoFragment();
+                Fragment fragment = new PastEventInfoFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentFrame, fragment);
                 transaction.addToBackStack(null);
