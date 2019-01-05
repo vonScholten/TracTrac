@@ -6,33 +6,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class Clubs_Fragment extends Fragment {
 
-   // TextView clubstitle;
+   ListView clubs;
 
-    int[] images = {R.drawable.twentyfourhourfinale, R.drawable.boldhorizons, R.drawable.dof, R.drawable.ifkgoteborg};
-    int[] imagestwo = {R.drawable.abeamconsulting, R.drawable.cya, R.drawable.fedo, R.drawable.knoxgs};
+   ImageView clubsimageview;
+
+   TextView clubstitleview;
+   TextView clubssportsview;
+   TextView clubscountryview;
+
+   String[] titles = {"test1", "test2", "test3", "test4", "test1", "test2", "test3", "test4"};
+   String[] sports = {"test5", "test6", "test7", "test8", "test5", "test6", "test7", "test8"};
+   String[] countries = {"test9", "test10", "test11", "test12", "test9", "test10", "test11", "test12"};
+   int[] images = {R.drawable.twentyfourhourfinale, R.drawable.boldhorizons, R.drawable.dof, R.drawable.ifkgoteborg, R.drawable.twentyfourhourfinale, R.drawable.boldhorizons, R.drawable.dof, R.drawable.ifkgoteborg};
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View inflaterview = inflater.inflate(R.layout.fragment_clubs, container, false);
+        clubs = inflaterview.findViewById(R.id.clubslist);
 
-        ListView clubs = inflaterview.findViewById(R.id.clubslist);
         CustomAdapter clubsadapter = new CustomAdapter();
         clubs.setAdapter(clubsadapter);
         return inflaterview;
-
     }
 
-    class CustomAdapter extends BaseAdapter{
+    class CustomAdapter extends BaseAdapter {
 
 
         @Override
@@ -50,17 +57,26 @@ public class Clubs_Fragment extends Fragment {
             return 0;
         }
 
+
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
 
             view = getLayoutInflater().inflate(R.layout.custom_layout_clubs, null);
-            ImageView clubsimageview = view.findViewById(R.id.clubsimage);
-            ImageView clubsimageviewtwo = view.findViewById(R.id.clubsimagetwo);
 
+            clubsimageview = view.findViewById(R.id.clubsimage);
             clubsimageview.setImageResource(images[i]);
-            clubsimageviewtwo.setImageResource(imagestwo[i]);
 
-            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
+            clubstitleview = view.findViewById(R.id.clubstitle);
+            clubstitleview.setText(titles[i]);
+
+            clubssportsview = view.findViewById(R.id.clubssports);
+            clubssportsview.setText(sports[i]);
+
+            clubscountryview = view.findViewById(R.id.clubscountry);
+            clubscountryview.setText(countries[i]);
+
+
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_in);
             view.startAnimation(animation);
 
             return view;
