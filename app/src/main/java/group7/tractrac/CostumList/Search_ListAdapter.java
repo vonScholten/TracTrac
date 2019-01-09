@@ -17,18 +17,20 @@ import java.util.ArrayList;
 public class Search_ListAdapter extends ArrayAdapter<SearchListItems> {
 
     private Context context;
+    private ArrayList<SearchListItems> arrayList;
     private int res;
 
     public Search_ListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<SearchListItems> objects) {
         super(context, resource, objects);
         context = context;
         res = resource;
+        arrayList = objects;
+
     }
     @SuppressLint("ResourceType")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
 
         int imageView = getItem(position).imageView;
         String eventName = getItem(position).eventName;
@@ -48,4 +50,23 @@ public class Search_ListAdapter extends ArrayAdapter<SearchListItems> {
         textPrice.setText(event);
         return convertView;
     }
+
+    public void newDataForList(ArrayList<SearchListItems> newArrayList) {
+        this.arrayList.clear();
+        for (int i = 0; i < newArrayList.size(); i++) { // copy global ArrayList
+            this.arrayList.add(newArrayList.get(i));
+    }
+        this.notifyDataSetChanged();
+    }
+/*
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        View view = null;
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = layoutInflater.inflate(R.layout.costume_search_list,parent, false);
+
+
+    }
+    */
 }

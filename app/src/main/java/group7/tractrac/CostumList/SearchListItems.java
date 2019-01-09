@@ -1,8 +1,11 @@
 package group7.tractrac.CostumList;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Comparator;
 
-public class SearchListItems  {
+public class SearchListItems implements Parcelable {
 
     public int imageView;
     public String eventName;
@@ -36,21 +39,36 @@ public class SearchListItems  {
 
     }
 
-    /*
-    * Crap.....
-    * */
 
-    public static Comparator<SearchListItems> COMPARE_BY_EVENT = new Comparator<SearchListItems>() {
-        @Override
-        public int compare(SearchListItems one, SearchListItems other) {
-            return one.event.compareTo(other.event);
+    //Parcelling
+    public SearchListItems(Parcel in) {
+        String[] data = new String[3];
+        in.readStringArray(data);
+        // the order needs to be the same as in writeToParcel() method
+        this.imageView = Integer.parseInt(data[0]);
+        this.eventName = data[1];
+        this.event = data[2];
+
+    }
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[] {String.valueOf(this.imageView),
+                this.eventName,
+                this.event});
+    }
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public SearchListItems createFromParcel(Parcel in) {
+            return new SearchListItems(in);
         }
-    };
 
-    public static Comparator<SearchListItems> COMPARE_BY_NAME = new Comparator<SearchListItems>() {
-        @Override
-        public int compare(SearchListItems one, SearchListItems other) {
-            return one.eventName.compareTo(other.eventName);
+        public SearchListItems[] newArray(int size) {
+            return new SearchListItems[size];
         }
     };
 }

@@ -48,5 +48,7 @@ public class Clubs_tab extends Fragment {
         Search_ListAdapter listAdapter = new Search_ListAdapter(getContext(),R.layout.costume_search_list,arrayList);
 
         listView.setAdapter(listAdapter);
+
+
     }
 }

@@ -2,12 +2,17 @@ package group7.tractrac.tabs;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ListView;
+import android.widget.SearchView;
+
 import group7.tractrac.CostumList.SearchListItems;
 import group7.tractrac.CostumList.Search_ListAdapter;
 import group7.tractrac.R;
@@ -18,7 +23,9 @@ public class Relevant_tab extends Fragment {
 
     private ListView listView;
     private ArrayList <SearchListItems> arrayList;
+    ArrayList<SearchListItems> test;
     SearchListItems searchListItems;
+    public Search_ListAdapter listAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,12 +34,29 @@ public class Relevant_tab extends Fragment {
         Log.d("Relevant", "onCreateView:");
         View inflaterview = inflater.inflate(R.layout.fragment_relevant_tab, container, false);
 
-        listView = inflaterview.findViewById(R.id.RelevantTabList);
-        setUpList();
+        Bundle bundle = getArguments();
+
+        if (bundle != null) {
+            test = bundle.getParcelableArrayList("arraylistTest");
+            Log.d("test filen", String.valueOf(test.size()));
+            if (test != null) {
+                Log.d("arraylist par", String.valueOf(test.get(1)));
+
+                listView = inflaterview.findViewById(R.id.RelevantTabList);
+                listAdapter = new Search_ListAdapter(getContext(),R.layout.costume_search_list,test);
+                listView.setAdapter(listAdapter);
+            }
+        }
+/*
+        else {
+            listView = inflaterview.findViewById(R.id.RelevantTabList);
+            setUpList();}
+            */
+
+
 
         return inflaterview;
     }
-
 
     void setUpList (){
 
@@ -47,8 +71,15 @@ public class Relevant_tab extends Fragment {
         searchListItems = new SearchListItems(R.drawable.eurosail,"Sailing","Relevant");
 
         arrayList.add(searchListItems);
-        Search_ListAdapter listAdapter = new Search_ListAdapter(getContext(),R.layout.costume_search_list,arrayList);
+        listAdapter = new Search_ListAdapter(getContext(),R.layout.costume_search_list,arrayList);
 
         listView.setAdapter(listAdapter);
     }
+
+    public void changeListView (ArrayList<SearchListItems> arrayList) {
+
+        listAdapter.newDataForList(arrayList);
+
+    }
+
 }
