@@ -78,10 +78,12 @@ class HomeFragment : Fragment() {
                     }
 
                 }
+
+                loader.visibility = View.GONE   //hide loader when done loading
             }
         })
 
-        loader.visibility = View.GONE
+
         listView.visibility = View.VISIBLE
 
         val animation = AnimationUtils.loadAnimation(context, R.anim.slide_right)
