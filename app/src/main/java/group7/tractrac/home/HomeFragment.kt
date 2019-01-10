@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
                         val transaction = fragmentManager!!.beginTransaction()
 
                         transaction.replace(R.id.fragmentFrame, fragment)
-                        transaction.setCustomAnimations(R.anim.slide_in_right, 0, 0, 0)
+                        //transaction.setCustomAnimations(R.anim.slide_in_right, 0, 0, 0)
                         transaction.addToBackStack(null)
                         transaction.commit()
 

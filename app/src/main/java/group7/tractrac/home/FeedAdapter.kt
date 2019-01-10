@@ -82,6 +82,7 @@ class FeedAdapter(private val context: Context?,
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
+                    titleTextView.text = data.name
                     loader.visibility = View.GONE
                     return false
                 }
@@ -89,7 +90,7 @@ class FeedAdapter(private val context: Context?,
                 )
             .into(imageView)
 
-        titleTextView.text = data.name
+
 
         return rowView
     }
