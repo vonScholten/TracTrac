@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
@@ -90,7 +91,8 @@ class FeedAdapter(private val context: Context?,
                 )
             .into(imageView)
 
-
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_right)
+        rowView.startAnimation(animation)
 
         return rowView
     }
