@@ -49,17 +49,22 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        Toast.makeText(this.getActivity(), "your message", Toast.LENGTH_SHORT).show();
-
-        Fragment newFragment = new Settings_Fragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.fragmentFrame, newFragment);
-        transaction.addToBackStack(null);
+        if (view == loginbutton) {
 
 
-        transaction.commit();
+            Fragment newFragment = new Settings_Fragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
+            transaction.replace(R.id.fragmentFrame, newFragment);
+            transaction.addToBackStack(null);
+
+
+            transaction.commit();
+        }
+
+        else {
+            Toast.makeText(this.getActivity(), "Not Yet Implemented", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
