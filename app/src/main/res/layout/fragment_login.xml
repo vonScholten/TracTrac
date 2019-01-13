@@ -14,7 +14,7 @@
         android:layout_marginTop="53dp"
         android:background="@drawable/edittext_login"
         android:focusable="true"
-        android:hint="Email Address"
+        android:hint="admin"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#015A84" />
 
@@ -27,7 +27,7 @@
         android:layout_marginTop="124dp"
         android:background="@drawable/edittext_login"
         android:focusable="true"
-        android:hint="Password"
+        android:hint="admin"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#015A84" />
 

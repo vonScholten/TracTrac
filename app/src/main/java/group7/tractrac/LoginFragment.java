@@ -2,6 +2,7 @@
 package group7.tractrac;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -17,6 +19,9 @@ import android.widget.Button;
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     Button loginbutton;
+    Button facebookbutton;
+    Button googlebutton;
+
 
     public LoginFragment() {
         // Required empty public constructor
@@ -27,14 +32,24 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+
         loginbutton = view.findViewById(R.id.loginbutton);
         loginbutton.setOnClickListener(this);
+
+
+        facebookbutton = view.findViewById(R.id.facebookbutton);
+        facebookbutton.setOnClickListener(this);
+
+        googlebutton = view.findViewById(R.id.googlebutton);
+        googlebutton.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void onClick(View view) {
+
+        Toast.makeText(this.getActivity(), "your message", Toast.LENGTH_SHORT).show();
 
         Fragment newFragment = new Settings_Fragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -44,6 +59,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
 
         transaction.commit();
+
+
 
     }
 }

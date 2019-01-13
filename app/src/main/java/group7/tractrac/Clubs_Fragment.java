@@ -1,6 +1,8 @@
 package group7.tractrac;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,22 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Clubs_Fragment extends Fragment {
+
+    FirebaseDatabase database;
+    DatabaseReference databaseReference;
+
+    List<ClubsData> clubsData;
 
    ListView clubs;
 
@@ -22,29 +39,56 @@ public class Clubs_Fragment extends Fragment {
    TextView clubssportsview;
    TextView clubscountryview;
 
-   String[] titles = {"test1", "test2", "test3", "test4", "test1", "test2", "test3", "test4"};
-   String[] sports = {"test5", "test6", "test7", "test8", "test5", "test6", "test7", "test8"};
-   String[] countries = {"test9", "test10", "test11", "test12", "test9", "test10", "test11", "test12"};
-   int[] images = {R.drawable.twentyfourhourfinale, R.drawable.boldhorizons, R.drawable.dof, R.drawable.ifkgoteborg, R.drawable.twentyfourhourfinale, R.drawable.boldhorizons, R.drawable.dof, R.drawable.ifkgoteborg};
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("clubs");
+
+        clubsData = new ArrayList<ClubsData>();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                clubsData.clear();
+                for (DataSnapshot postSnapshot1: dataSnapshot.getChildren()){
+
+                    ClubsData data = postSnapshot1.getValue(ClubsData.class);
+                    clubsData.add(data);
+                }
+
+                CustomAdapter clubsadapter = new CustomAdapter(clubsData, getContext());
+                clubs.setAdapter(clubsadapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         View inflaterview = inflater.inflate(R.layout.fragment_clubs, container, false);
         clubs = inflaterview.findViewById(R.id.clubslist);
 
-        CustomAdapter clubsadapter = new CustomAdapter();
+        CustomAdapter clubsadapter = new CustomAdapter(clubsData, getContext());
         clubs.setAdapter(clubsadapter);
         return inflaterview;
     }
 
     class CustomAdapter extends BaseAdapter {
 
+        List<ClubsData> dataList;
+        Context context;
+
+        public CustomAdapter(List<ClubsData> dataList, Context context) {
+            this.dataList = dataList;
+            this.context = context;
+        }
 
         @Override
         public int getCount() {
-            return images.length;
+            return dataList.size();
         }
 
         @Override
@@ -63,21 +107,23 @@ public class Clubs_Fragment extends Fragment {
 
             view = getLayoutInflater().inflate(R.layout.custom_layout_clubs, null);
 
+            ClubsData temp = dataList.get(i);
+
             clubsimageview = view.findViewById(R.id.clubsimage);
-            clubsimageview.setImageResource(images[i]);
+            Picasso.get().load(temp.getUrl()).into(clubsimageview);
 
             clubstitleview = view.findViewById(R.id.clubstitle);
-            clubstitleview.setText(titles[i]);
+            clubstitleview.setText(temp.getName());
 
             clubssportsview = view.findViewById(R.id.clubssports);
-            clubssportsview.setText(sports[i]);
+            clubssportsview.setText(temp.getSport());
 
             clubscountryview = view.findViewById(R.id.clubscountry);
-            clubscountryview.setText(countries[i]);
+            clubscountryview.setText(temp.getCountry());
 
+            Animation animationtwo = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_left);
+            view.startAnimation(animationtwo);
 
-            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_in);
-            view.startAnimation(animation);
 
             return view;
         }
