@@ -124,7 +124,6 @@ public class Clubs_Fragment extends Fragment {
             Animation animationtwo = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_left);
             view.startAnimation(animationtwo);
 
-
             return view;
         }
     }
