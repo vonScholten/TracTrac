@@ -12,6 +12,7 @@ import com.crashlytics.android.Crashlytics
 import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
+import group7.tractrac.tabs.SearchFragment
 import group7.tractrac.tabs.Search_Activity
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -134,7 +135,7 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     fun navigateSearch() {
-        /*
+
         for (fragment in supportFragmentManager.fragments) {
             supportFragmentManager.beginTransaction().remove(fragment).commit()
         }
@@ -144,12 +145,12 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         transaction.replace(id.fragmentFrame, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-        */
+
         //Intent intent = new Intent(this, user);
 
-        val intent = Intent(this, Search_Activity::class.java)
+       // val intent = Intent(this, Search_Activity::class.java)
 
-        startActivity(intent);
+       // startActivity(intent);
        // setContentView(R.layout.)
     }
 

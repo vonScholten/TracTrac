@@ -40,7 +40,7 @@ public class Relevant_tab extends Fragment {
             test = bundle.getParcelableArrayList("arraylistTest");
             Log.d("test filen", String.valueOf(test.size()));
             if (test != null) {
-                Log.d("arraylist par", String.valueOf(test.get(1)));
+
 
                 listView = inflaterview.findViewById(R.id.RelevantTabList);
                 listAdapter = new Search_ListAdapter(getContext(),R.layout.costume_search_list,test);

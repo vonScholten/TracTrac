@@ -157,14 +157,21 @@ private TabLayout tabLayout;
               //  FragmentManager manager = getFragmentManager();
                // manager.beginTransaction().replace(R.id.RelevanteID,relevant_tab).commit();
 
+            if (s.isEmpty()) {
+                // this work
+                // Log.d("Hey im empty","Who are you?");
 
-                /**
-                 * Prøv at kigge på pageadapter.startUpdate
-                 * */
-                createBundle(testList());
+                createBundle(releventList);
+                viewPager.setAdapter(null);
+                setUpViewPager(viewPager);
+
+                }
+                else {
+                createBundle(sortArray(releventList,s));
                 viewPager.setAdapter(null);
                 setUpViewPager(viewPager);
                 Log.d("textchange", "Hello, Bitches!");
+            }
                 return false;
             }
         });
@@ -201,4 +208,14 @@ private TabLayout tabLayout;
         return arrayList;
     }
 
+    private ArrayList sortArray (ArrayList<SearchListItems> current, String string ) {
+    ArrayList<SearchListItems> newArray = new ArrayList<SearchListItems>();
+    for (int i = 0; i < current.size(); i++) {
+    if (current.get(i).eventName.contains(string)) {
+        newArray.add(current.get(i));
+    }
+}
+
+        return newArray;
+    }
 }
