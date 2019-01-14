@@ -50,16 +50,19 @@
         android:textColor="#ffffff"
         android:layout_margin="4dp"/>
 
-    <TextView
-        android:id="@+id/forgotpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Forget your password?"
-        android:textColor="#019FC2"
-        android:textSize="15sp"
-        android:layout_margin="4dp"/>
+        <Button
+            android:id="@+id/forgotpassword"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FAFAFA"
+            android:textColor="#019FC2"
+            android:text="Forget your password?"
+            android:layout_margin="8dp"
+            android:textAllCaps="false"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/button_login"/>
 
     <TextView
         android:id="@+id/or"
@@ -77,10 +80,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#39579A"
+        android:backgroundTint="#39579A"
         android:textColor="#ffffff"
         android:text="Login with Facebook"
-        android:layout_margin="4dp"/>
+        android:layout_margin="4dp"
+        android:background="@drawable/button_login"/>
 
     <Button
         android:id="@+id/googlebutton"
@@ -88,10 +92,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#DF4A32"
+        android:backgroundTint="#DF4A32"
         android:textColor="#ffffff"
         android:text="Login with Google"
-        android:layout_margin="4dp"/>
+        android:layout_margin="4dp"
+        android:background="@drawable/button_login"/>
 
     <Button
         android:id="@+id/newaccount"
@@ -99,10 +104,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#019FC2"
-        android:textColor="#ffffff"
+        android:backgroundTint="#FAFAFA"
+        android:textColor="#019FC2"
         android:text="Get new account ... SIGN UP"
-        android:layout_margin="8dp" />
+        android:layout_margin="8dp"
+        android:textAllCaps="false"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@drawable/button_login"/>
     </LinearLayout>
 
 </RelativeLayout>

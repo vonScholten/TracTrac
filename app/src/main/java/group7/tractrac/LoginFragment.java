@@ -21,10 +21,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     Button loginbutton;
     Button facebookbutton;
     Button googlebutton;
+    Button forgotpassword;
+    Button newaccount;
+
 
 
     public LoginFragment() {
-        // Required empty public constructor
     }
 
 
@@ -42,6 +44,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         googlebutton = view.findViewById(R.id.googlebutton);
         googlebutton.setOnClickListener(this);
+
+        forgotpassword = view.findViewById(R.id.forgotpassword);
+        forgotpassword.setOnClickListener(this);
+
+        newaccount = view.findViewById(R.id.newaccount);
+        newaccount.setOnClickListener(this);
 
         return view;
     }
