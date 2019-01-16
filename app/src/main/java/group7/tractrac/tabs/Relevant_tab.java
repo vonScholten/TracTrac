@@ -37,7 +37,7 @@ public class Relevant_tab extends Fragment {
         Bundle bundle = getArguments();
 
         if (bundle != null) {
-            test = bundle.getParcelableArrayList("arraylistTest");
+            test = bundle.getParcelableArrayList("ReleventArrayList");
             Log.d("test filen", String.valueOf(test.size()));
             if (test != null) {
 

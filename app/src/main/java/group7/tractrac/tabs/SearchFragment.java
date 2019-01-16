@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import group7.tractrac.ClubsData;
 import group7.tractrac.CostumList.SearchListItems;
 import group7.tractrac.CostumList.Search_ListAdapter;
 import group7.tractrac.EventsData;
@@ -35,25 +36,30 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-private ListView listView;
-private ArrayList <SearchListItems> arrayList;
-private ArrayList<SearchListItems> currentArrayList;
-private SearchListItems searchListItems;
 
-private DatabaseReference dbReference;
-private ArrayList<EventsData> eventsData;
+    private SearchListItems searchListItems;
 
-private ArrayList<SearchListItems> releventList;
-private ArrayList<SearchListItems> eventList;
-private ArrayList<SearchListItems> clubsList;
+    private DatabaseReference dbReference;
+    private ArrayList<EventsData> eventsData;
+    private ArrayList<ClubsData> clubsData;
 
-private static final String  TAG = "Main";
-private SectionsAdapter sectionsAdapter;
-private ViewPager viewPager;
-private Search_ListAdapter listAdapter;
-private View inflaterview;
-Relevant_tab relevant_tab = new Relevant_tab();
-private TabLayout tabLayout;
+    private ArrayList<SearchListItems> releventList;
+    private ArrayList<SearchListItems> eventList;
+    private ArrayList<SearchListItems> clubsList;
+
+    private static final String TAG = "Main";
+    private SectionsAdapter sectionsAdapter;
+    private ViewPager viewPager;
+
+    private int lastPage = 0;
+    private View inflaterview;
+
+    Relevant_tab relevant_tab = new Relevant_tab();
+    Clubs_tab clubs_tab = new Clubs_tab();
+    Events_tab events_tab = new Events_tab();
+
+
+    private TabLayout tabLayout;
 
 
     @Override
@@ -65,37 +71,70 @@ private TabLayout tabLayout;
         SearchView searchView = (SearchView) inflaterview.findViewById(R.id.searchSearch);
         viewPager = (ViewPager) inflaterview.findViewById(R.id.viewcontainer);
 
-        relevant_tab = new Relevant_tab();
+        final CreateBundle createBundle = new CreateBundle();
         sectionsAdapter = new SectionsAdapter(getFragmentManager());
 
+
         eventsData = new ArrayList<>();
+        clubsData = new ArrayList<>();
         releventList = new ArrayList<>();
+        eventList = new ArrayList<>();
+        clubsList = new ArrayList<>();
 
-       // createBundle();
-
-
+        // createBundle();
 
         dbReference = FirebaseDatabase.getInstance().getReference("upcoming");
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eventsData.clear();
-                Log.d("Virker download","yes/no");
-                for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     EventsData eventsDataL = postSnapShot.getValue(EventsData.class);
                     eventsData.add(eventsDataL);
                 }
 
                 for (int i = 0; i < eventsData.size(); i++) {
-                    searchListItems = new SearchListItems(R.drawable.ess, eventsData.get(i).getTitle(),"Event");
+                    searchListItems = new SearchListItems(R.drawable.ess, eventsData.get(i).getTitle(), "Event");
+                    eventList.add(searchListItems);
                     releventList.add(searchListItems);
                 }
-                createBundle(releventList);
-                FragmentManager manager = getFragmentManager();
 
-                //viewPager.getAdapter().
-                //manager.beginTransaction().replace(R.id.RelevanteID,relevant_tab).commit();
-                setUpViewPager(viewPager);
+                dbReference = FirebaseDatabase.getInstance().getReference("clubs");
+                dbReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        clubsData.clear();
+                        for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                            ClubsData clubsDataL = postSnapShot.getValue(ClubsData.class);
+                            clubsData.add(clubsDataL);
+                        }
+
+                        for (int i = 0; i < clubsData.size(); i++) {
+                            searchListItems = new SearchListItems(R.drawable.ess, clubsData.get(i).getName(), "Clubs");
+                            if (searchListItems == null) {
+                                Log.d("SEarchList", String.valueOf(searchListItems));
+                            }
+                            Log.d("clubs", String.valueOf(clubsList));
+                            clubsList.add(searchListItems);
+                            /**
+                             * Error Null object reference
+                             * */
+                            releventList.add(searchListItems);
+                        }
+                        createBundle.createReleventBundle(releventList, relevant_tab);
+                        createBundle.createEventBundle(eventList,events_tab);
+                        createBundle.createClubBundle(clubsList,clubs_tab);
+
+                        setUpViewPager(viewPager);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }
 
             @Override
@@ -106,43 +145,6 @@ private TabLayout tabLayout;
 
         tabLayout = (TabLayout) inflaterview.findViewById(R.id.searchTabs);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        Log.d(TAG, "onTabSelected: 0 ");
-                        /**
-                         * Tror at fragmentets view ikke bliver åbnet korrekt.
-                         * Kan være fordi "ViewPager" åbner dem i viewContainer....
-                         *
-                         */
-                        //createBundle(releventList);
-                        //FragmentManager manager = getFragmentManager();
-                        //manager.beginTransaction().replace(R.id.RelevanteID,relevant_tab).commit();
-                        break;
-                    case 1:
-                        Log.d(TAG, "onTabSelected: 1");
-                        break;
-                    case 2:
-                        Log.d(TAG, "onTabSelected: 2 ");
-                        break;
-                    default:
-                        Log.d(TAG, "onTabSelected: no tab selected ");
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -153,69 +155,58 @@ private TabLayout tabLayout;
 
             @Override
             public boolean onQueryTextChange(String s) {
-                //createBundle();
-              //  FragmentManager manager = getFragmentManager();
-               // manager.beginTransaction().replace(R.id.RelevanteID,relevant_tab).commit();
 
-            if (s.isEmpty()) {
-                // this work
-                // Log.d("Hey im empty","Who are you?");
+                if (s.isEmpty()) {
+                    createBundle.createReleventBundle(sortArray(releventList, s), relevant_tab);
+                    createBundle.createEventBundle(sortArray(eventList,s),events_tab);
+                    createBundle.createClubBundle(sortArray(clubsList,s),clubs_tab);
+                    lastPage = viewPager.getCurrentItem();
+                    viewPager.setAdapter(null);
+                    setUpViewPager(viewPager);
+                    viewPager.setCurrentItem(lastPage);
 
-                createBundle(releventList);
-                viewPager.setAdapter(null);
-                setUpViewPager(viewPager);
+                } else {
+                    createBundle.createReleventBundle(sortArray(releventList, s), relevant_tab);
+                    createBundle.createEventBundle(sortArray(eventList,s),events_tab);
+                    createBundle.createClubBundle(sortArray(clubsList,s),clubs_tab);
+                    lastPage = viewPager.getCurrentItem();
+                    viewPager.setAdapter(null);
+                    setUpViewPager(viewPager);
 
+                    /**
+                     * Sets what page to start on
+                     * */
+                    viewPager.setCurrentItem(lastPage);
+
+                    Log.d("textchange", "Hello, Bitches!");
                 }
-                else {
-                createBundle(sortArray(releventList,s));
-                viewPager.setAdapter(null);
-                setUpViewPager(viewPager);
-                Log.d("textchange", "Hello, Bitches!");
-            }
                 return false;
             }
         });
         //Creates the fragments when collecting data is done
         //setUpViewPager(viewPager);
-        return  inflaterview;
+        return inflaterview;
     }
 
-    private void setUpViewPager (ViewPager pager ) {
+    private void setUpViewPager(ViewPager pager) {
         Log.d("SetupView", "setUpView: ");
         SectionsAdapter adapter = new SectionsAdapter(getFragmentManager());
 
-        //Old
-        //adapter.addFragment(new Relevant_tab(), "RELEVANT");
-        //New
         adapter.addFragment(relevant_tab, "RELEVANT");
-        adapter.addFragment(new Events_tab(), "EVENTS");
-        adapter.addFragment(new Clubs_tab(), "CLUBS");
+        adapter.addFragment(events_tab, "EVENTS");
+        adapter.addFragment(clubs_tab, "CLUBS");
         pager.setAdapter(adapter);
     }
 
-    private void createBundle (ArrayList<SearchListItems> arrayList) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("arraylistTest",arrayList);
-        relevant_tab.setArguments(bundle);
-    }
-
-    private ArrayList testList () {
-        arrayList = new ArrayList<>();
-        searchListItems = new SearchListItems(R.drawable.ess,"Relevant test","Relevant endny en test");
-        arrayList.add(searchListItems);
-        searchListItems = new SearchListItems(R.drawable.eurosail,"Sailing","Relevant");
-        arrayList.add(searchListItems);
-        return arrayList;
-    }
-
-    private ArrayList sortArray (ArrayList<SearchListItems> current, String string ) {
-    ArrayList<SearchListItems> newArray = new ArrayList<SearchListItems>();
-    for (int i = 0; i < current.size(); i++) {
-    if (current.get(i).eventName.contains(string)) {
-        newArray.add(current.get(i));
-    }
-}
-
+    private ArrayList sortArray(ArrayList<SearchListItems> current, String string) {
+        ArrayList<SearchListItems> newArray = new ArrayList<SearchListItems>();
+        String arrayText;
+        for (int i = 0; i < current.size(); i++) {
+            arrayText = current.get(i).eventName.toLowerCase();
+            if (arrayText.contains(string.toLowerCase())) {
+                newArray.add(current.get(i));
+            }
+        }
         return newArray;
     }
 }
