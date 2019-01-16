@@ -76,6 +76,6 @@ dependencies {
     implementation 'com.airbnb.android:lottie:2.7.0'
 
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.6@aar') {
-        transitive = true;
+        transitive = true
     }
 }

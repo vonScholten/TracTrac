@@ -13,8 +13,9 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import group7.tractrac.R
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var listView : ListView
     private lateinit var adapter: FeedAdapter
@@ -90,6 +91,11 @@ class HomeFragment : Fragment() {
         view.startAnimation(animation)
 
         return view
+
+    }
+
+    override fun onClick(v: View?) {
+
 
     }
 }

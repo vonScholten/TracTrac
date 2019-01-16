@@ -72,7 +72,7 @@ class FeedAdapter(private val context: Context?,
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    Log.e("TAG", "Error loading image", e);
+                    Log.e("TAG", "Error loading image", e)
                     return false
                 }
 

@@ -26,12 +26,12 @@ public class Search_Activity extends AppCompatActivity {
 
         Log.d("Activity", "Search: ");
         sectionsAdapter= new SectionsAdapter(getSupportFragmentManager());
-        viewPager = (ViewPager) findViewById(R.id.container01);
+        viewPager = findViewById(R.id.container01);
         setUpViewPager(viewPager);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        SearchView searchView = (SearchView) findViewById(R.id.searchbar);
+        SearchView searchView = findViewById(R.id.searchbar);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
