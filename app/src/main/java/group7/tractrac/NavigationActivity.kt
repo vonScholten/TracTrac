@@ -79,7 +79,7 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         val inflator = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val v = inflator.inflate(R.layout.custom_actionbar, null)
 
-        supportActionBar?.setCustomView(v)
+        supportActionBar?.customView = v
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 

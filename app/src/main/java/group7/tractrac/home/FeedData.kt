@@ -4,7 +4,7 @@ class FeedData {
     var name: String? = null
     var imageUrl: String? = null
 
-    constructor() {}
+    constructor()
 
     constructor(name: String, imageUrl: String) {
         this.name = name

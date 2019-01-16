@@ -62,8 +62,8 @@ private TabLayout tabLayout;
         // Inflate the layout for this fragment
         inflaterview = inflater.inflate(R.layout.fragment_search, container, false);
 
-        SearchView searchView = (SearchView) inflaterview.findViewById(R.id.searchSearch);
-        viewPager = (ViewPager) inflaterview.findViewById(R.id.viewcontainer);
+        SearchView searchView = inflaterview.findViewById(R.id.searchSearch);
+        viewPager = inflaterview.findViewById(R.id.viewcontainer);
 
         relevant_tab = new Relevant_tab();
         sectionsAdapter = new SectionsAdapter(getFragmentManager());
@@ -104,7 +104,7 @@ private TabLayout tabLayout;
             }
         });
 
-        tabLayout = (TabLayout) inflaterview.findViewById(R.id.searchTabs);
+        tabLayout = inflaterview.findViewById(R.id.searchTabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
