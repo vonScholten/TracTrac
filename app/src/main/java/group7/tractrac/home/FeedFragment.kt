@@ -20,8 +20,8 @@ class FeedFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
-        val feedTitle = view.findViewById(R.id.feed_article_title) as TextView
-        val feedCover = view.findViewById(R.id.feed_article_cover) as ImageView
+        val feedTitle = view.findViewById(R.id.feed_detail_title) as TextView
+        val feedCover = view.findViewById(R.id.feed_detail_image) as ImageView
 
         arguments?.getString("title")?.let {
             title = it
