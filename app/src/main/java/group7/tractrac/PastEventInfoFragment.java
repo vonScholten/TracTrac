@@ -3,6 +3,7 @@ package group7.tractrac;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -126,16 +127,13 @@ public class PastEventInfoFragment extends Fragment {
             }
             );
 
-            long test = 23;
+            long test;
             test = PastEventsFragment.racesnr;
-            Log.d(TAG, "test is " + test);
             racesnum = view.findViewById(R.id.racenr);
             if (test == 0){
-                Log.d(TAG, "Racesnr is " + test);
                 racesnum.setText("No races yet");
             }
             else {
-                Log.d(TAG, "Racesnr is " + test);
                     racesnum.setText("Race " + (i + 1));
             }
 
@@ -143,6 +141,7 @@ public class PastEventInfoFragment extends Fragment {
             return view;
         }
     }
+
 }
 
 

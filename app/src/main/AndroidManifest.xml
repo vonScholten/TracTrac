@@ -3,6 +3,7 @@
     package="group7.tractrac">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
             android:allowBackup="true"
@@ -28,8 +29,8 @@
                 android:value="8dd25af85e773ee2059432823b4068f2dce1ac3b"
         />
         <activity android:name=".VideoActivity"
-        android:label="Video Activity"
-        android:theme="@style/AppTheme.NoActionBar"/>
+         android:configChanges="orientation|screenSize"
+         android:theme="@style/Theme.AppCompat.Light" />
     </application>
 
 </manifest>

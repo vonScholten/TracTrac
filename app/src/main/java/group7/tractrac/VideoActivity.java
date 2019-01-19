@@ -26,8 +26,26 @@ public class VideoActivity extends AppCompatActivity {
                 eventVideo.start();
             }
         });
+        if(savedInstanceState!=null){
+            int currentPos =  savedInstanceState.getInt("current position");
+            eventVideo.seekTo(currentPos);
+        }
         eventVideo.start();
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("current position",eventVideo.getCurrentPosition() );
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if(savedInstanceState!=null){
+            int currentPos =  savedInstanceState.getInt("current position");
+            eventVideo.seekTo(currentPos);
+        }
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 }
