@@ -47,7 +47,7 @@ public class Events_tab extends Fragment {
         return inflaterview;
     }
 
-
+/*
     void setUpList (){
 
         arrayList = new ArrayList<>();
@@ -65,4 +65,5 @@ public class Events_tab extends Fragment {
 
         listView.setAdapter(listAdapter);
     }
+    */
 }

@@ -46,7 +46,7 @@ public class Clubs_tab extends Fragment {
 
         return inflaterview;
     }
-
+/*
     void setUpList (){
 
         arrayList = new ArrayList<>();
@@ -66,4 +66,5 @@ public class Clubs_tab extends Fragment {
 
 
     }
+    */
 }

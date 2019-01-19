@@ -57,7 +57,7 @@ public class Relevant_tab extends Fragment {
 
         return inflaterview;
     }
-
+/*
     void setUpList (){
 
         arrayList = new ArrayList<>();
@@ -75,11 +75,6 @@ public class Relevant_tab extends Fragment {
 
         listView.setAdapter(listAdapter);
     }
-
-    public void changeListView (ArrayList<SearchListItems> arrayList) {
-
-        listAdapter.newDataForList(arrayList);
-
-    }
+    */
 
 }

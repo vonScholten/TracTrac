@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.squareup.picasso.Picasso;
 import group7.tractrac.R;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Search_ListAdapter extends ArrayAdapter<SearchListItems> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        int imageView = getItem(position).imageView;
+         String imageView = getItem(position).imageView;
         String eventName = getItem(position).eventName;
         String event = getItem(position).event;
 
@@ -40,12 +41,16 @@ public class Search_ListAdapter extends ArrayAdapter<SearchListItems> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         convertView = inflater.inflate(res,parent,false);
 
+        SearchListItems searchListItems = arrayList.get(position);
+
         ImageView eventflag = convertView.findViewById(R.id.eventFlag);
         TextView eventname = convertView.findViewById(R.id.eventText01);
         TextView textPrice = convertView.findViewById(R.id.eventText02);
 
-        eventflag.setImageResource(imageView);
-        //eventflag.setImage(imageView);
+        Picasso.get().load(searchListItems.getImageView()).into(eventflag);
+
+        //eventflag.setImageResource(imageView);
+
         eventname.setText(eventName);
         textPrice.setText(event);
         return convertView;

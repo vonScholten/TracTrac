@@ -7,11 +7,11 @@ import java.util.Comparator;
 
 public class SearchListItems implements Parcelable {
 
-    public int imageView;
+    public String imageView;
     public String eventName;
     public String event;
 
-    public void setImageView(int imageView) {
+    public void setImageView(String imageView) {
         this.imageView = imageView;
 
     }
@@ -32,7 +32,12 @@ public class SearchListItems implements Parcelable {
         this.event = event;
     }
 
-    public SearchListItems (int imageView, String eventName, String event) {
+    public String getImageView() {
+        return imageView;
+    }
+
+
+    public SearchListItems(String imageView, String eventName, String event) {
         this.imageView = imageView;
         this.eventName = eventName;
         this.event = event;
@@ -45,23 +50,24 @@ public class SearchListItems implements Parcelable {
         String[] data = new String[3];
         in.readStringArray(data);
         // the order needs to be the same as in writeToParcel() method
-        this.imageView = Integer.parseInt(data[0]);
+        this.imageView = data[0];
         this.eventName = data[1];
         this.event = data[2];
 
     }
 
     @Override
-    public int describeContents(){
+    public int describeContents() {
         return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[] {String.valueOf(this.imageView),
+        dest.writeStringArray(new String[]{String.valueOf(this.imageView),
                 this.eventName,
                 this.event});
     }
+
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public SearchListItems createFromParcel(Parcel in) {
             return new SearchListItems(in);

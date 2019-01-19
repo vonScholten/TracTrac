@@ -32,6 +32,9 @@ import group7.tractrac.tabs.Relevant_tab;
 import group7.tractrac.tabs.SectionsAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class SearchFragment extends Fragment {
@@ -94,7 +97,7 @@ public class SearchFragment extends Fragment {
                 }
 
                 for (int i = 0; i < eventsData.size(); i++) {
-                    searchListItems = new SearchListItems(R.drawable.ess, eventsData.get(i).getTitle(), "Event");
+                    searchListItems = new SearchListItems(eventsData.get(i).getImageUrl(), eventsData.get(i).getTitle(), "Event");
                     eventList.add(searchListItems);
                     releventList.add(searchListItems);
                 }
@@ -110,7 +113,7 @@ public class SearchFragment extends Fragment {
                         }
 
                         for (int i = 0; i < clubsData.size(); i++) {
-                            searchListItems = new SearchListItems(R.drawable.ess, clubsData.get(i).getName(), "Clubs");
+                            searchListItems = new SearchListItems(clubsData.get(i).getUrl(), clubsData.get(i).getName(), "Club");
                             if (searchListItems == null) {
                                 Log.d("SEarchList", String.valueOf(searchListItems));
                             }
@@ -121,6 +124,7 @@ public class SearchFragment extends Fragment {
                              * */
                             releventList.add(searchListItems);
                         }
+                        Collections.shuffle(releventList);
                         createBundle.createReleventBundle(releventList, relevant_tab);
                         createBundle.createEventBundle(eventList,events_tab);
                         createBundle.createClubBundle(clubsList,clubs_tab);
@@ -157,9 +161,9 @@ public class SearchFragment extends Fragment {
             public boolean onQueryTextChange(String s) {
 
                 if (s.isEmpty()) {
-                    createBundle.createReleventBundle(sortArray(releventList, s), relevant_tab);
-                    createBundle.createEventBundle(sortArray(eventList,s),events_tab);
-                    createBundle.createClubBundle(sortArray(clubsList,s),clubs_tab);
+                    createBundle.createReleventBundle(releventList, relevant_tab);
+                    createBundle.createEventBundle(eventList,events_tab);
+                    createBundle.createClubBundle(clubsList,clubs_tab);
                     lastPage = viewPager.getCurrentItem();
                     viewPager.setAdapter(null);
                     setUpViewPager(viewPager);
@@ -209,4 +213,6 @@ public class SearchFragment extends Fragment {
         }
         return newArray;
     }
+
+
 }
