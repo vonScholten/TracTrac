@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 public class Settings_Fragment extends Fragment implements View.OnClickListener{
@@ -20,6 +22,10 @@ public class Settings_Fragment extends Fragment implements View.OnClickListener{
         buttonLogout = view.findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(this);
 
+        Animation animationtwo = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_left);
+
+        view.startAnimation(animationtwo);
+
         return view;
     }
 
@@ -31,7 +37,6 @@ public class Settings_Fragment extends Fragment implements View.OnClickListener{
 
         transaction.replace(R.id.fragmentFrame, newFragment);
         transaction.addToBackStack(null);
-
 
         transaction.commit();
 

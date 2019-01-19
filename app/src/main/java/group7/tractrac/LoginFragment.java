@@ -2,15 +2,18 @@
 package group7.tractrac;
 
 
-import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 
 /**
@@ -18,7 +21,7 @@ import android.widget.Toast;
  */
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
-    Button loginbutton;
+    private CircularProgressButton loginbutton;
     Button facebookbutton;
     Button googlebutton;
     Button forgotpassword;
@@ -28,7 +31,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     public LoginFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +53,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         newaccount = view.findViewById(R.id.newaccount);
         newaccount.setOnClickListener(this);
 
+        Animation animationtwo = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_left);
+        view.startAnimation(animationtwo);
+
         return view;
     }
 
@@ -59,15 +64,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         if (view == loginbutton) {
 
+            loginbutton.startAnimation();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Fragment newFragment = new Settings_Fragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-            Fragment newFragment = new Settings_Fragment();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragmentFrame, newFragment);
+                    transaction.addToBackStack(null);
 
-            transaction.replace(R.id.fragmentFrame, newFragment);
-            transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+            }, 2500);
 
-
-            transaction.commit();
         }
 
         else {

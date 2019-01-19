@@ -11,7 +11,7 @@
             android:orientation="vertical">
 
         <ImageView
-                android:id="@+id/feed_article_cover"
+                android:id="@+id/feed_detail_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="6dp"
@@ -20,7 +20,7 @@
                 android:layout_gravity="center"
         />
         <TextView
-                android:id="@+id/feed_article_title"
+                android:id="@+id/feed_detail_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
@@ -34,7 +34,7 @@
 
 
             <TextView
-                android:id="@+id/feed_article_subtitle"
+                android:id="@+id/feed_detail_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12dp"

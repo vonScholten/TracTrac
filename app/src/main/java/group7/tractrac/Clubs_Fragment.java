@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -123,6 +124,8 @@ public class Clubs_Fragment extends Fragment {
 
             Animation animationtwo = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_left);
             view.startAnimation(animationtwo);
+
+
 
             return view;
         }

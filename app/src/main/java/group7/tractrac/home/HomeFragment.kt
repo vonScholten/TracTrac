@@ -57,10 +57,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         // value of item that is clicked
                         val itemValue = listView.getItemAtPosition(position) as FeedData
 
-                        // Toast the values
-                        //Toast.makeText(context, itemValue.imageUrl, Toast.LENGTH_LONG)
-                        //    .show()
-
                         val fragment = FeedFragment().apply {
                             arguments = Bundle().apply {
                                 this.putString("title", itemValue.name)
@@ -68,13 +64,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
                             }
                         }
 
-
-                        val transaction = fragmentManager!!.beginTransaction()
-
-                        transaction.replace(R.id.fragmentFrame, fragment)
-                        //transaction.setCustomAnimations(R.anim.slide_in_right, 0, 0, 0)
-                        transaction.addToBackStack(null)
-                        transaction.commit()
+                        fragmentManager!!
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragmentFrame, fragment)
+                            .commit()
 
                     }
 
