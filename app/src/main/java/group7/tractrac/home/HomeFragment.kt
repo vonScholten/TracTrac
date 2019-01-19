@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import group7.tractrac.R
+import kotlinx.android.synthetic.main.custom_cardview_feed.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var listView : ListView
     private lateinit var adapter: FeedAdapter
-    private lateinit var loader : LottieAnimationView
+    private lateinit var loader: LottieAnimationView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,6 +27,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         listView = view.findViewById(R.id.news_list_view) as ListView
         loader = view.findViewById(R.id.imageLoader) as LottieAnimationView
+
+
         listView.visibility = View.GONE
 
         FirebaseApp.initializeApp(context)
@@ -61,13 +62,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
                             arguments = Bundle().apply {
                                 this.putString("title", itemValue.name)
                                 this.putString("imageUrl", itemValue.imageUrl)
+                                this.putString("date", itemValue.date)
+                                this.putString("text", itemValue.text)
                             }
                         }
 
                         fragmentManager!!
                             .beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.fragmentFrame, fragment)
+                            .addToBackStack(tag)
+                            .replace(R.id.fragmentFrame, fragment, tag)
                             .commit()
 
                     }
@@ -90,6 +93,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-
     }
+
 }

@@ -25,19 +25,30 @@ class FeedFragment : Fragment() {
 
     private lateinit var title : String
     private lateinit var imageUrl : String
+    private lateinit var date : String
+    private lateinit var text : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
+
         val feedTitle = view.findViewById(R.id.feed_detail_title) as TextView
         val feedCover = view.findViewById(R.id.feed_detail_image) as ImageView
+        val feedText = view.findViewById(R.id.feed_detail_subtitle) as TextView
+        val feedDate = view.findViewById(R.id.feed_detail_date) as TextView
+
         val scrollView = view.findViewById(R.id.feed_detail_ScrollView) as ScrollView
 
         arguments?.getString("title")?.let {
             title = it
         }
-
         arguments?.getString("imageUrl")?.let {
             imageUrl = it
+        }
+        arguments?.getString("date")?.let {
+            date = it
+        }
+        arguments?.getString("text")?.let {
+            text = it
         }
 
         val requestOptions : RequestOptions = RequestOptions()
@@ -66,6 +77,8 @@ class FeedFragment : Fragment() {
                     isFirstResource: Boolean
                 ): Boolean {
                     feedTitle.text =title
+                    feedText.text =text
+                    feedDate.text =date
                     scrollView.smoothScrollTo(0, 200)
                     return false
                 }

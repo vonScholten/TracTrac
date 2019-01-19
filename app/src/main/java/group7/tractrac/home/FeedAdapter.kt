@@ -49,6 +49,7 @@ class FeedAdapter(private val context: Context?,
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
         val view = inflater.inflate(R.layout.custom_cardview_feed, viewGroup, false)
 
+        val dateTextView = view.findViewById(R.id.feed_date) as TextView
         val titleTextView = view.findViewById(R.id.feed_title) as TextView
         val imageView = view.findViewById(R.id.feed_image) as ImageView
         val loader : LottieAnimationView = view.findViewById(R.id.imageLoader) as LottieAnimationView
@@ -82,6 +83,7 @@ class FeedAdapter(private val context: Context?,
                     isFirstResource: Boolean
                 ): Boolean {
                     titleTextView.text = data.name
+                    dateTextView.text = data.date
                     loader.visibility = View.GONE
                     return false
                 }
