@@ -19,6 +19,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import group7.tractrac.R
+import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 
 class FeedFragment : Fragment() {
@@ -86,7 +87,7 @@ class FeedFragment : Fragment() {
             )
             .into(feedCover)
 
-        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_down)
         view.startAnimation(animation)
 
         return view

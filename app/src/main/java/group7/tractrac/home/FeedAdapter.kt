@@ -91,7 +91,7 @@ class FeedAdapter(private val context: Context?,
                 )
             .into(imageView)
 
-        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_right)
+        val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
         view.startAnimation(animation)
 
         return view
