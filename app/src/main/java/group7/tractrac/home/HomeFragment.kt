@@ -1,17 +1,17 @@
 package group7.tractrac.home
 
 import android.os.Bundle
-import android.provider.Settings
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ListView
+import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import group7.tractrac.R
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,15 +35,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         listView.visibility = View.GONE
 
         val job = GlobalScope.launch {
-            delay(10000L)
             fetch()
+            delay(1500L)
         }
         job.children
 
         listView.visibility = View.VISIBLE
-
-        //val animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)
-        //view.startAnimation(animation)
 
         return view
 
