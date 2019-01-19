@@ -47,11 +47,11 @@ class FeedAdapter(private val context: Context?,
     }
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.custom_cardview_feed, viewGroup, false)
+        val view = inflater.inflate(R.layout.custom_cardview_feed, viewGroup, false)
 
-        val titleTextView = rowView.findViewById(R.id.feed_title) as TextView
-        val imageView = rowView.findViewById(R.id.feed_image) as ImageView
-        val loader : LottieAnimationView = rowView.findViewById(R.id.imageLoader) as LottieAnimationView
+        val titleTextView = view.findViewById(R.id.feed_title) as TextView
+        val imageView = view.findViewById(R.id.feed_image) as ImageView
+        val loader : LottieAnimationView = view.findViewById(R.id.imageLoader) as LottieAnimationView
 
         val  data : FeedData = feed.get(i)
 
@@ -60,7 +60,7 @@ class FeedAdapter(private val context: Context?,
 
         loader.visibility = View.VISIBLE
         Glide
-            .with(rowView)
+            .with(view)
             .load(data.imageUrl)
             .apply(requestOptions)
             .listener(object : RequestListener<Drawable> {
@@ -90,8 +90,8 @@ class FeedAdapter(private val context: Context?,
             .into(imageView)
 
         val animation = AnimationUtils.loadAnimation(context, R.anim.slide_right)
-        rowView.startAnimation(animation)
+        view.startAnimation(animation)
 
-        return rowView
+        return view
     }
 }

@@ -4,21 +4,28 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".home.FeedFragment">
-    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
-    <LinearLayout
+
+    <ImageView
+            android:id="@+id/feed_detail_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_gravity="top"/>
+
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/feed_detail_ScrollView"
+            android:paddingTop="120dp">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:elevation="8dp"
+            android:background="@color/offWhite">
 
-        <ImageView
-                android:id="@+id/feed_detail_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="6dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_gravity="center"
-        />
+
         <TextView
                 android:id="@+id/feed_detail_title"
                 android:layout_width="match_parent"
@@ -45,4 +52,5 @@
 
     </LinearLayout>
         </ScrollView>
+
 </FrameLayout>
