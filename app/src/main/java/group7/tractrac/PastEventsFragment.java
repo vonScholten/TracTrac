@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static io.fabric.sdk.android.Fabric.TAG;
 
 
 public class PastEventsFragment extends Fragment implements AdapterView.OnItemClickListener {
@@ -28,6 +31,9 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
     private DatabaseReference databaseReference;
     private List<EventsData> eventsDataList;
     static String title;
+    static String date;
+    static String location;
+    static long racesnr;
 
     ListView events;
 
@@ -129,14 +135,26 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
                 if (arg2 == 0){
                     eventid = 0;
                     title = dataSnapshot.child("01").child("title").getValue().toString();
+                    date = dataSnapshot.child("01").child("date").getValue().toString();
+                    location = dataSnapshot.child("01").child("location").getValue().toString();
+                    racesnr = (long) dataSnapshot.child("01").child("racenr").getValue();
                 }
                 else if (arg2 == 1){
                     eventid = 1;
                     title = dataSnapshot.child("02").child("title").getValue().toString();
+                    date = dataSnapshot.child("02").child("date").getValue().toString();
+                    location = dataSnapshot.child("02").child("location").getValue().toString();
+                    racesnr = (long) dataSnapshot.child("02").child("racenr").getValue();
                 }
                 else if (arg2 == 2){
                     eventid = 2;
                     title = dataSnapshot.child("03").child("title").getValue().toString();
+                    date = dataSnapshot.child("03").child("date").getValue().toString();
+                    location = dataSnapshot.child("03").child("location").getValue().toString();
+                    racesnr = (long) dataSnapshot.child("03").child("racenr").getValue();
+                    //racesnr = (long) dataSnapshot.child("03").child("racenr").getValue();
+                    Log.d(TAG, "Right now racesnr is set to " + racesnr);
+
                 }
                 Fragment fragment = new PastEventInfoFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();

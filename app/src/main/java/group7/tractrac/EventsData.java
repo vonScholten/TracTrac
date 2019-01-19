@@ -6,16 +6,18 @@ public class EventsData {
     private String category = "";
     private String date = "";
     private String races = "";
+    private long racenr;
     private String participants = "";
 
 
     public EventsData(){}
 
-    public EventsData(String title, String imageUrl, String category, String date, String races, String participants) {
+    public EventsData(String title, String imageUrl, String category, String date, long racenr, String races, String participants) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.category = category;
         this.date = date;
+        this.racenr = racenr;
         this.races = races;
         this.participants = participants;
     }
@@ -52,6 +54,9 @@ public class EventsData {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    //public long getRaceNr() {return racenr;}
+    //public void setRaceNr() {this.racenr = racenr;}
 
 
     public String getParticipants() {

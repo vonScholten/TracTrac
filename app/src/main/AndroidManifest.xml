@@ -27,6 +27,9 @@
                 android:name="io.fabric.ApiKey"
                 android:value="8dd25af85e773ee2059432823b4068f2dce1ac3b"
         />
+        <activity android:name=".VideoActivity"
+        android:label="Video Activity"
+        android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
