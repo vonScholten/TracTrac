@@ -1,6 +1,7 @@
 package group7.tractrac.home
 
 import android.os.Bundle
+import android.provider.Settings
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,25 +11,34 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import group7.tractrac.R
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
-    private lateinit var listView : ListView
+    private lateinit var listView: ListView
     private lateinit var adapter: FeedAdapter
     private lateinit var loader: LottieAnimationView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         listView = view.findViewById(R.id.news_list_view) as ListView
         loader = view.findViewById(R.id.imageLoader) as LottieAnimationView
 
-
         listView.visibility = View.GONE
 
-        fetch()
+        val job = GlobalScope.launch {
+            delay(10000L)
+            fetch()
+        }
+        job.children
 
         listView.visibility = View.VISIBLE
 
@@ -43,11 +53,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     }
 
-    private fun fetch(){
+    private fun fetch() {
         FirebaseApp.initializeApp(context)
-        val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("feed")
+        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("feed")
 
-        val feed : List<FeedData> = ArrayList<FeedData>()
+        val feed: List<FeedData> = ArrayList<FeedData>()
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
@@ -58,7 +68,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                 (feed as ArrayList<FeedData>).clear()
 
-                for (postSnapshot : DataSnapshot in dataSnapshot.children){
+                for (postSnapshot: DataSnapshot in dataSnapshot.children) {
                     val temp = postSnapshot.getValue(FeedData::class.java)
                     feed.add(temp!!)
                 }
@@ -94,6 +104,4 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
         })
     }
-
-
 }
