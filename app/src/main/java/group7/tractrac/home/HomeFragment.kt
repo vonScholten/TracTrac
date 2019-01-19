@@ -5,14 +5,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.*
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import group7.tractrac.R
-import kotlinx.android.synthetic.main.custom_cardview_feed.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -31,6 +28,22 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         listView.visibility = View.GONE
 
+        fetch()
+
+        listView.visibility = View.VISIBLE
+
+        //val animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)
+        //view.startAnimation(animation)
+
+        return view
+
+    }
+
+    override fun onClick(v: View?) {
+
+    }
+
+    private fun fetch(){
         FirebaseApp.initializeApp(context)
         val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("feed")
 
@@ -46,8 +59,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 (feed as ArrayList<FeedData>).clear()
 
                 for (postSnapshot : DataSnapshot in dataSnapshot.children){
-                    val data = postSnapshot.getValue(FeedData::class.java)
-                    feed.add(data!!)
+                    val temp = postSnapshot.getValue(FeedData::class.java)
+                    feed.add(temp!!)
                 }
                 adapter = FeedAdapter(context, feed)
                 listView.adapter = adapter
@@ -56,14 +69,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
                         // value of item that is clicked
-                        val itemValue = listView.getItemAtPosition(position) as FeedData
+                        val data = listView.getItemAtPosition(position) as FeedData
 
                         val fragment = FeedFragment().apply {
                             arguments = Bundle().apply {
-                                this.putString("title", itemValue.name)
-                                this.putString("imageUrl", itemValue.imageUrl)
-                                this.putString("date", itemValue.date)
-                                this.putString("text", itemValue.text)
+                                this.putString("title", data.name)
+                                this.putString("imageUrl", data.imageUrl)
+                                this.putString("date", data.date)
+                                this.putString("text", data.text)
                             }
                         }
 
@@ -80,19 +93,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 loader.visibility = View.GONE   //hide loader when done loading
             }
         })
-
-
-        listView.visibility = View.VISIBLE
-
-        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_right)
-        view.startAnimation(animation)
-
-        return view
-
     }
 
-    override fun onClick(v: View?) {
-
-    }
 
 }

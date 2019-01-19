@@ -86,7 +86,7 @@ class FeedFragment : Fragment() {
             )
             .into(feedCover)
 
-        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_left)
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)
         view.startAnimation(animation)
 
         return view
