@@ -1,7 +1,6 @@
 package group7.tractrac
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.design.widget.NavigationView
@@ -13,7 +12,6 @@ import group7.tractrac.R.id
 import group7.tractrac.R.layout
 import group7.tractrac.home.HomeFragment
 import group7.tractrac.tabs.SearchFragment
-import group7.tractrac.tabs.Search_Activity
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_navigation.*
 

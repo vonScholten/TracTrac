@@ -1,40 +1,23 @@
 package group7.tractrac.tabs;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.*;
-import android.widget.ListView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.SearchView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
+import com.google.firebase.database.*;
 import group7.tractrac.ClubsData;
 import group7.tractrac.CostumList.SearchListItems;
-import group7.tractrac.CostumList.Search_ListAdapter;
 import group7.tractrac.EventsData;
-import group7.tractrac.PastEventsFragment;
 import group7.tractrac.R;
-import group7.tractrac.UpcomingEventsFragment;
-import group7.tractrac.tabs.Clubs_tab;
-import group7.tractrac.tabs.Events_tab;
-import group7.tractrac.tabs.Relevant_tab;
-import group7.tractrac.tabs.SectionsAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class SearchFragment extends Fragment {

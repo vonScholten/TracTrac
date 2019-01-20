@@ -1,18 +1,12 @@
 package group7.tractrac.tabs;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ListView;
-import android.widget.SearchView;
-
 import group7.tractrac.CostumList.SearchListItems;
 import group7.tractrac.CostumList.Search_ListAdapter;
 import group7.tractrac.R;

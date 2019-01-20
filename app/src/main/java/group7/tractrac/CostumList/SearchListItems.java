@@ -3,8 +3,6 @@ package group7.tractrac.CostumList;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Comparator;
-
 public class SearchListItems implements Parcelable {
 
     public String imageView;

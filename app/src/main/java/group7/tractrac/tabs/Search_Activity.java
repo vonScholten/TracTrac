@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
-
 import group7.tractrac.R;
 
 public class Search_Activity extends AppCompatActivity {

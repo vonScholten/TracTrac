@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
-import com.google.firebase.storage.FirebaseStorage
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -20,6 +19,7 @@ import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.google.firebase.storage.FirebaseStorage
 import group7.tractrac.R
 
 @GlideModule
