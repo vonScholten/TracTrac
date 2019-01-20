@@ -23,6 +23,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
     TextView categoryview;
     TextView dateview;
     TextView racesview;
+    TextView location_info;
     ImageView eventimageview;
     public static int eventid = 0;
     private DatabaseReference databaseReference;
@@ -103,6 +104,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             categoryview = view.findViewById(R.id.category);
             dateview = view.findViewById(R.id.date);
             racesview = view.findViewById(R.id.races);
+            location_info = view.findViewById(R.id.location_text);
 
             EventsData eventsData = eventsDataList.get(i);
             Picasso.get().load(eventsData.getImageUrl()).into(eventimageview);
@@ -111,6 +113,7 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
             categoryview.setText(eventsData.getCategory());
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
+            location_info.setText(eventsData.getLocation());
 
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right);
             view.startAnimation(animation);
@@ -142,6 +145,10 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
                     else if (arg2 == 1){
                         eventid = 1;
                         title = dataSnapshot.child("02").child("title").getValue().toString();
+                    }
+                    else if (arg2 == 2){
+                        eventid = 2;
+                        title = dataSnapshot.child("03").child("title").getValue().toString();
                     }
                     Fragment fragment = new UpcomingEventInfoFragment();
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();

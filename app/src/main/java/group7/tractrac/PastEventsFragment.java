@@ -29,6 +29,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
     TextView dateview;
     TextView racesview;
     ImageView eventimageview;
+    TextView location_name;
     public static int eventid = 0;
     private DatabaseReference databaseReference;
     private List<EventsData> eventsDataList;
@@ -107,6 +108,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             categoryview = view.findViewById(R.id.category);
             dateview = view.findViewById(R.id.date);
             racesview = view.findViewById(R.id.races);
+            location_name = view.findViewById(R.id.location_text);
 
             EventsData eventsData = eventsDataList.get(i);
             Picasso.get().load(eventsData.getImageUrl()).into(eventimageview);
@@ -115,6 +117,7 @@ public class PastEventsFragment extends Fragment implements AdapterView.OnItemCl
             categoryview.setText(eventsData.getCategory());
             dateview.setText(eventsData.getDate());
             racesview.setText(eventsData.getRaces());
+            location_name.setText(eventsData.getLocation());
 
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_left);
             view.startAnimation(animation);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ public class PastEventInfoFragment extends Fragment {
     TextView location_past;
     ImageView eventImg;
     ImageView play;
+    ImageView trophy;
+    ImageView flag;
     VideoView video;
     String title;
     private DatabaseReference databaseReference;
@@ -116,10 +119,18 @@ public class PastEventInfoFragment extends Fragment {
         public View getView(int i, View view, ViewGroup viewGroup) {
             view = getLayoutInflater().inflate(R.layout.custom_layout_video_list, null);
             play = view.findViewById(R.id.playicon);
+            trophy = view.findViewById(R.id.trophy);
+            flag = view.findViewById(R.id.flagicon);
+            trophy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(), "Wip: Display placement list for race", Toast.LENGTH_SHORT).show();
+                }
+            });
             play.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), "play is clicked", Toast.LENGTH_SHORT).show();
+
                     Intent videoIntent = new Intent(getActivity(), VideoActivity.class);
                     startActivity(videoIntent);
 
@@ -131,7 +142,11 @@ public class PastEventInfoFragment extends Fragment {
             test = PastEventsFragment.racesnr;
             racesnum = view.findViewById(R.id.racenr);
             if (test == 0){
+                play.setVisibility(View.INVISIBLE);
+                trophy.setVisibility(View.INVISIBLE);
+                flag.setVisibility(View.GONE);
                 racesnum.setText("No races yet");
+                racesnum.setGravity(Gravity.CENTER);
             }
             else {
                     racesnum.setText("Race " + (i + 1));

@@ -87,6 +87,31 @@ public class UpcomingEventInfoFragment extends Fragment {
 
                 });
             }
+
+            else
+            if (UpcomingEventsFragment.eventid == 2){
+                eventTitle.setText(UpcomingEventsFragment.title);
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        eventsDataList.clear();
+                        for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
+                            EventsData eventsData = postSnapShot.getValue(EventsData.class);
+                            eventsDataList.add(eventsData);
+                        }
+
+                        EventsData eventsData = eventsDataList.get(UpcomingEventsFragment.eventid);
+                        Picasso.get().load(eventsData.getImageUrl()).into(eventImg);
+                        //titleview.setText(eventsData.getTitle());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+
+                });
+            }
     }
 
     }
