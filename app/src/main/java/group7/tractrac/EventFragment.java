@@ -17,6 +17,7 @@ public class EventFragment extends Fragment {
     private TabLayout tablayout;
     private AppBarLayout appbarlayout;
     private ViewPager viewpager;
+    String description;
     String title = "";
     String date = "";
     String races = "";

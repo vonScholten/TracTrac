@@ -17,6 +17,9 @@ import java.util.List;
 
 public class UpcomingEventInfoFragment extends Fragment {
     TextView eventTitle;
+    TextView description;
+    TextView date;
+    TextView location;
     ImageView eventImg;
     String title;
     private DatabaseReference databaseReference;
@@ -28,6 +31,9 @@ public class UpcomingEventInfoFragment extends Fragment {
         View inflaterview = inflater.inflate(R.layout.fragment_upcoming_event_info, container, false);
         eventTitle = inflaterview.findViewById(R.id.event_info_title);
         eventImg = inflaterview.findViewById(R.id.event_image);
+        description = inflaterview.findViewById(R.id.description_id);
+        date = inflaterview.findViewById(R.id.date_info);
+        location = inflaterview.findViewById(R.id.location_info);
 
         eventsDataList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("upcoming");
@@ -39,8 +45,12 @@ public class UpcomingEventInfoFragment extends Fragment {
 
 
     private void setTitle() {
+        eventTitle.setText(UpcomingEventsFragment.title);
+        description.setText(UpcomingEventsFragment.description);
+        date.setText(UpcomingEventsFragment.date);
+        location.setText(UpcomingEventsFragment.location);
         if (UpcomingEventsFragment.eventid == 0){
-            eventTitle.setText(UpcomingEventsFragment.title);
+
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -65,7 +75,7 @@ public class UpcomingEventInfoFragment extends Fragment {
         }
         else
             if (UpcomingEventsFragment.eventid == 1){
-                eventTitle.setText(UpcomingEventsFragment.title);
+
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -90,7 +100,7 @@ public class UpcomingEventInfoFragment extends Fragment {
 
             else
             if (UpcomingEventsFragment.eventid == 2){
-                eventTitle.setText(UpcomingEventsFragment.title);
+
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

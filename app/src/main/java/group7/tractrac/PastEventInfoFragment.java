@@ -146,7 +146,6 @@ public class PastEventInfoFragment extends Fragment {
                 trophy.setVisibility(View.INVISIBLE);
                 flag.setVisibility(View.GONE);
                 racesnum.setText("No races yet");
-                racesnum.setGravity(Gravity.CENTER);
             }
             else {
                     racesnum.setText("Race " + (i + 1));

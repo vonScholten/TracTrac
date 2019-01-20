@@ -28,10 +28,11 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
     public static int eventid = 0;
     private DatabaseReference databaseReference;
     private List<EventsData> eventsDataList;
-    //private ProgressBar spinner;
     ListView events;
     static String title;
-    static  ImageView image;
+    static String description;
+    static String date;
+    static String location;
 
     public UpcomingEventsFragment(){
 
@@ -141,14 +142,23 @@ public class UpcomingEventsFragment extends Fragment implements AdapterView.OnIt
                     if (arg2 == 0){
                         eventid = 0;
                         title = dataSnapshot.child("01").child("title").getValue().toString();
+                        description = dataSnapshot.child("01").child("description").getValue().toString();
+                        date = dataSnapshot.child("01").child("date").getValue().toString();
+                        location = dataSnapshot.child("01").child("location").getValue().toString();
                     }
                     else if (arg2 == 1){
                         eventid = 1;
                         title = dataSnapshot.child("02").child("title").getValue().toString();
+                        date = dataSnapshot.child("02").child("date").getValue().toString();
+                        description = dataSnapshot.child("02").child("description").getValue().toString();
+                        location = dataSnapshot.child("02").child("location").getValue().toString();
                     }
                     else if (arg2 == 2){
                         eventid = 2;
+                        date = dataSnapshot.child("03").child("date").getValue().toString();
                         title = dataSnapshot.child("03").child("title").getValue().toString();
+                        description = dataSnapshot.child("03").child("description").getValue().toString();
+                        location = dataSnapshot.child("03").child("location").getValue().toString();
                     }
                     Fragment fragment = new UpcomingEventInfoFragment();
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
