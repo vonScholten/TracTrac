@@ -49,6 +49,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
             />
             <TextView
                     android:id="@+id/feed_date"
@@ -57,6 +58,7 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="9sp"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
             />
 
         </LinearLayout>
