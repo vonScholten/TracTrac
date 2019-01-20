@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.TextView
@@ -19,7 +20,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import group7.tractrac.R
-import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 
 class FeedFragment : Fragment() {
@@ -33,9 +33,10 @@ class FeedFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
 
         val feedTitle = view.findViewById(R.id.feed_detail_title) as TextView
-        val feedCover = view.findViewById(R.id.feed_detail_image) as ImageView
+        val feedImage = view.findViewById(R.id.feed_detail_image) as ImageView
         val feedText = view.findViewById(R.id.feed_detail_subtitle) as TextView
         val feedDate = view.findViewById(R.id.feed_detail_date) as TextView
+        val feedFrame = view.findViewById(R.id.feed_frame) as FrameLayout
 
         val scrollView = view.findViewById(R.id.feed_detail_ScrollView) as ScrollView
 
@@ -85,7 +86,7 @@ class FeedFragment : Fragment() {
                 }
             }
             )
-            .into(feedCover)
+            .into(feedImage)
 
         val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
         view.startAnimation(animation)

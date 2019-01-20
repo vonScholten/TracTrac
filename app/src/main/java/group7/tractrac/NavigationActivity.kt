@@ -65,7 +65,7 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         //setSupportActionBar(findViewById(R.id.tractrac_toolbar))
 
-        //supportActionBar?.title = ""
+
         //supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
         //supportActionBar?.setDisplayUseLogoEnabled(true)
 
@@ -75,6 +75,7 @@ class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setHomeButtonEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
 
         val inflator = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val v = inflator.inflate(R.layout.custom_actionbar, null)
