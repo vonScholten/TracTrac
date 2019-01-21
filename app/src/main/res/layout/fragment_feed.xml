@@ -7,65 +7,69 @@
         tools:context=".home.FeedFragment"
         android:id="@+id/feed_frame">
 
-
     <ImageView
             android:id="@+id/feed_detail_image"
             android:transitionName="@string/transition_feed_image"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="200dp"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:layout_gravity="top"/>
+            android:adjustViewBounds="true"/>
 
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/feed_detail_ScrollView">
+
         <LinearLayout
                 android:id="@+id/feed_text_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:elevation="8dp"
-                android:background="@color/offWhite"
-                android:layout_marginTop="120dp">
-
-            <TextView
-                    android:id="@+id/feed_detail_title"
-                    android:transitionName="@string/transition_feed_title"
+                android:paddingTop="200dp">
+            <LinearLayout
+                    android:id="@+id/feed_text_layout_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:elevation="16dp"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:background="@color/colorPrimary"
-                    android:textStyle="bold"/>
-
-            <TextView
-                    android:id="@+id/feed_detail_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="16dp"
-                    android:padding="2dp"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
-                    android:background="@color/colorPrimary"
-                    android:textAllCaps="true"/>
-
-            <TextView
-                    android:id="@+id/feed_detail_subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:elevation="8dp"
-                    android:padding="12dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"/>
+                    android:background="@color/offWhite">
 
+                <TextView
+                        android:id="@+id/feed_detail_title"
+                        android:transitionName="@string/transition_feed_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:elevation="16dp"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:background="@color/colorPrimary"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:id="@+id/feed_detail_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="16dp"
+                        android:padding="2dp"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:background="@color/colorPrimary"
+                        android:textAllCaps="true"/>
+
+                <TextView
+                        android:id="@+id/feed_detail_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:padding="12dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"/>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </FrameLayout>

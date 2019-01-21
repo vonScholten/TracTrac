@@ -1,6 +1,7 @@
 package group7.tractrac.home
 
 
+import android.animation.ObjectAnimator
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,10 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.ScrollView
-import android.widget.TextView
+import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -36,9 +34,8 @@ class FeedFragment : Fragment() {
         val feedImage = view.findViewById(R.id.feed_detail_image) as ImageView
         val feedText = view.findViewById(R.id.feed_detail_subtitle) as TextView
         val feedDate = view.findViewById(R.id.feed_detail_date) as TextView
-        val feedFrame = view.findViewById(R.id.feed_frame) as FrameLayout
-
         val scrollView = view.findViewById(R.id.feed_detail_ScrollView) as ScrollView
+
 
         arguments?.getString("title")?.let {
             title = it
@@ -81,19 +78,31 @@ class FeedFragment : Fragment() {
                     feedTitle.text =title
                     feedText.text =text
                     feedDate.text =date
-                    scrollView.smoothScrollTo(0, 200)
+
+                    val pos = scrollView.scrollY
+                    ObjectAnimator.ofInt(scrollView, "scrollY", pos + 300).setDuration(1000).start()
+
+                    /*
+                    scrollView.post {
+
+                        scrollView.smoothScrollTo(0,pos + scrollView.height)
+                    }
+                    */
+
                     return false
                 }
             }
             )
             .into(feedImage)
 
-        val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        view.startAnimation(animation)
+        //val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        //view.startAnimation(animation)
 
         return view
-
-
     }
+
+
+
+
 
 }

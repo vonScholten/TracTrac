@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="group7.tractrac">
+          xmlns:tools="http://schemas.android.com/tools" package="group7.tractrac">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -11,7 +11,7 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AppCompat.Light" tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name="group7.tractrac.NavigationActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".tabs.Search_Activity"
-            android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+                android:name=".tabs.Search_Activity"
+                android:label="@string/title_activity_search"
+                android:theme="@style/AppTheme.NoActionBar"/>
 
         <meta-data
                 android:name="io.fabric.ApiKey"
