@@ -80,7 +80,7 @@ class FeedFragment : Fragment() {
                     feedDate.text =date
 
                     val pos = scrollView.scrollY
-                    ObjectAnimator.ofInt(scrollView, "scrollY", pos + 300).setDuration(1000).start()
+                    ObjectAnimator.ofInt(scrollView, "scrollY", pos + 300).setDuration(600).start()
 
                     /*
                     scrollView.post {
@@ -95,8 +95,8 @@ class FeedFragment : Fragment() {
             )
             .into(feedImage)
 
-        //val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        //view.startAnimation(animation)
+        val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        view.startAnimation(animation)
 
         return view
     }

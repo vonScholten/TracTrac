@@ -32,12 +32,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         listView = view.findViewById(R.id.news_list_view) as ListView
         loader = view.findViewById(R.id.imageLoader) as LottieAnimationView
 
-        loader.speed = 3.0F
+        loader.speed = 2.0F
 
         listView.visibility = View.GONE
 
         val job = GlobalScope.launch {
-            delay(1500L)
+            //delay(1500L)
             fetch()
         }
         job.children

@@ -11,7 +11,7 @@
             android:id="@+id/feed_detail_image"
             android:transitionName="@string/transition_feed_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"/>
 
@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="200dp">
+                android:paddingTop="300dp">
             <LinearLayout
                     android:id="@+id/feed_text_layout_content"
                     android:layout_width="match_parent"
