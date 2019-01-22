@@ -70,18 +70,16 @@
             android:tint="#015A84"
             app:srcCompat="@drawable/clubs_title_icon"
             android:layout_marginTop="17dp"
-            android:layout_marginStart="-1dp"
+            android:layout_marginStart="-4dp"
             android:orientation="vertical"
             android:layout_toEndOf="@+id/clubsimage"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="261dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true" android:layout_marginEnd="262dp"/>
 
     <ImageView
             android:id="@+id/sporticon"
-            android:layout_width="41dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:tint="#015A84"
             app:srcCompat="@drawable/category_icon_24dp"
             android:layout_marginTop="48dp"
@@ -93,8 +91,8 @@
 
     <ImageView
             android:id="@+id/countryicon"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="75dp"
             android:tint="#015A84"
