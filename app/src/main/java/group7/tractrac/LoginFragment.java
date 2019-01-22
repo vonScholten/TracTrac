@@ -77,14 +77,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                     transaction.commit();
                 }
-            }, 2500);
+            }, 1500);
 
         }
-
         else {
             Toast.makeText(this.getActivity(), "Not Yet Implemented", Toast.LENGTH_SHORT).show();
         }
-
 
     }
 }

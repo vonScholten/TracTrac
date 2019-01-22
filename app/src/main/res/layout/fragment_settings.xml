@@ -1,89 +1,98 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:minHeight="250dp"
-    android:orientation="vertical"
-    android:visibility="visible"
-    tools:context="group7.tractrac.Settings_Fragment"
-    tools:layout_editor_absoluteY="81dp">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="group7.tractrac.Settings_Fragment">
 
-    <EditText
-        android:id="@+id/changeName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:textAlignment="textStart"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="64dp" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="81dp">
 
-    <EditText
-        android:id="@+id/changeUsername"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="64dp" />
+        <EditText
+                android:id="@+id/changeName"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textAlignment="textStart"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="64dp"/>
 
-    <EditText
-        android:id="@+id/changePassword"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/changeEmail"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="64dp"/>
+        <EditText
+                android:id="@+id/changeUsername"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="64dp"/>
 
-    <EditText
-        android:id="@+id/changeEmail"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/switchNotifications"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="64dp" />
+        <EditText
+                android:id="@+id/changePassword"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/changeEmail"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="64dp"/>
 
-    <Switch
-        android:id="@+id/switchNotifications"
-        android:layout_width="352dp"
-        android:layout_height="42dp"
-        android:background="@drawable/roundedcorners"
-        android:text="   Notifications"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/background_light"
-        android:textSize="14sp"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="64dp"/>
+        <EditText
+                android:id="@+id/changeEmail"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="E-mail"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/switchNotifications"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="64dp"/>
 
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="214dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="@drawable/roundedcorners"
-        android:elevation="0dp"
-        android:text="Log out"
-        android:textColor="@android:color/background_light"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="64dp" />
+        <Switch
+                android:id="@+id/switchNotifications"
+                android:layout_width="352dp"
+                android:layout_height="42dp"
+                android:background="@drawable/roundedcorners"
+                android:text="   Notifications"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="64dp"/>
 
-</LinearLayout>
+        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/buttonLogout"
+                android:layout_width="214dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/roundedcorners"
+                android:elevation="0dp"
+                android:text="Log out"
+                android:textColor="@android:color/background_light"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="64dp"
+                app:spinning_bar_color="#ffffff"
+                app:spinning_bar_padding="6dp"
+                app:spinning_bar_width="4dp"
+                app:initialCornerAngle="10dp"
+                style="?android:attr/borderlessButtonStyle"/>
+    </LinearLayout>
+
+</RelativeLayout>

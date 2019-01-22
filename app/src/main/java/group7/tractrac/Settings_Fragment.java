@@ -1,6 +1,7 @@
 package group7.tractrac;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -9,10 +10,11 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class Settings_Fragment extends Fragment implements View.OnClickListener{
 
-    Button buttonLogout;
+    private CircularProgressButton buttonLogout;
 
 
     @Override
@@ -32,13 +34,26 @@ public class Settings_Fragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
 
-        Fragment newFragment = new LoginFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        if (view == buttonLogout) {
 
-        transaction.replace(R.id.fragmentFrame, newFragment);
-        transaction.addToBackStack(null);
+            buttonLogout.startAnimation();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Fragment newFragment = new LoginFragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-        transaction.commit();
+                    transaction.replace(R.id.fragmentFrame, newFragment);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+
+                }
+            }, 1500);
+
+        }
+
 
     }
 

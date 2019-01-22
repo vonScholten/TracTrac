@@ -37,7 +37,7 @@ android {
         applicationId "group7.tractrac"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
