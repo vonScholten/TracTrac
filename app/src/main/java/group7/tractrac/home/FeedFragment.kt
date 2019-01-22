@@ -10,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.ImageView
+import android.widget.ScrollView
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -18,14 +20,16 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import group7.tractrac.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 
 class FeedFragment : Fragment() {
 
-    private lateinit var title : String
-    private lateinit var imageUrl : String
-    private lateinit var date : String
-    private lateinit var text : String
+    private lateinit var title: String
+    private lateinit var imageUrl: String
+    private lateinit var date: String
+    private lateinit var text: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
@@ -50,7 +54,7 @@ class FeedFragment : Fragment() {
             text = it
         }
 
-        val requestOptions : RequestOptions = RequestOptions()
+        val requestOptions: RequestOptions = RequestOptions()
             .centerCrop()
 
         Glide
@@ -75,9 +79,9 @@ class FeedFragment : Fragment() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    feedTitle.text =title
-                    feedText.text =text
-                    feedDate.text =date
+                    feedTitle.text = title
+                    feedText.text = text
+                    feedDate.text = date
 
                     val pos = scrollView.scrollY
                     ObjectAnimator.ofInt(scrollView, "scrollY", pos + 300).setDuration(600).start()
@@ -100,9 +104,6 @@ class FeedFragment : Fragment() {
 
         return view
     }
-
-
-
 
 
 }
