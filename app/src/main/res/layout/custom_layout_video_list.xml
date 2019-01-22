@@ -50,12 +50,10 @@
             app:srcCompat="@drawable/trophy"
             android:id="@+id/trophy"
             android:tint="#ffcf40"
-            android:layout_toEndOf="@+id/racenr"
-            android:layout_marginStart="57dp"
             android:layout_marginTop="24dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="38dp"/>
+            android:layout_marginEnd="44dp"/>
 
 
 </RelativeLayout>

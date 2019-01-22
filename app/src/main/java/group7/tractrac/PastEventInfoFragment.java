@@ -123,10 +123,8 @@ public class PastEventInfoFragment extends Fragment {
             play.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-
                     Intent videoIntent = new Intent(getActivity(), VideoActivity.class);
                     startActivity(videoIntent);
-
                 }
             }
             );
